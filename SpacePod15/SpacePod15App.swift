@@ -11,7 +11,14 @@ import SwiftUI
 struct SpacePod15App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            TabView {
+                TasksView()
+                    .tabItem {
+                        Label("Tasks", systemImage: "list.dash")
+                    }
+                
+            }
         }
     }
 }

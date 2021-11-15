@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2611FD7A2742579D004DF7E9 /* SpacePod15App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2611FD792742579D004DF7E9 /* SpacePod15App.swift */; };
-		2611FD7C2742579D004DF7E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2611FD7B2742579D004DF7E9 /* ContentView.swift */; };
+		2611FD7C2742579D004DF7E9 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2611FD7B2742579D004DF7E9 /* TasksView.swift */; };
 		2611FD7E2742579E004DF7E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2611FD7D2742579E004DF7E9 /* Assets.xcassets */; };
 		2611FD812742579E004DF7E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2611FD802742579E004DF7E9 /* Preview Assets.xcassets */; };
 		2611FD88274257F2004DF7E9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2611FD87274257F2004DF7E9 /* .gitignore */; };
@@ -18,7 +18,7 @@
 /* Begin PBXFileReference section */
 		2611FD762742579D004DF7E9 /* SpacePod15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpacePod15.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2611FD792742579D004DF7E9 /* SpacePod15App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacePod15App.swift; sourceTree = "<group>"; };
-		2611FD7B2742579D004DF7E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2611FD7B2742579D004DF7E9 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		2611FD7D2742579E004DF7E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2611FD802742579E004DF7E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2611FD87274257F2004DF7E9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				2611FD792742579D004DF7E9 /* SpacePod15App.swift */,
-				2611FD7B2742579D004DF7E9 /* ContentView.swift */,
+				2611FD7B2742579D004DF7E9 /* TasksView.swift */,
 				2611FD7D2742579E004DF7E9 /* Assets.xcassets */,
 				2611FD7F2742579E004DF7E9 /* Preview Content */,
 			);
@@ -145,7 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2611FD7C2742579D004DF7E9 /* ContentView.swift in Sources */,
+				2611FD7C2742579D004DF7E9 /* TasksView.swift in Sources */,
 				2611FD7A2742579D004DF7E9 /* SpacePod15App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
