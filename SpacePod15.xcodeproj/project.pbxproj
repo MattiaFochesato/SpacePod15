@@ -15,6 +15,7 @@
 		2611FD8A2742584F004DF7E9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2611FD892742584F004DF7E9 /* README.md */; };
 		2611FD8D274265BB004DF7E9 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2611FD8C274265BB004DF7E9 /* AwardsView.swift */; };
 		2611FD8F274265D1004DF7E9 /* TrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2611FD8E274265D1004DF7E9 /* TrackerView.swift */; };
+		A6E0BE5627427BBE00AE8222 /* AwardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0BE5527427BBE00AE8222 /* AwardDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		2611FD892742584F004DF7E9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2611FD8C274265BB004DF7E9 /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 		2611FD8E274265D1004DF7E9 /* TrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerView.swift; sourceTree = "<group>"; };
+		A6E0BE5527427BBE00AE8222 /* AwardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				2611FD7B2742579D004DF7E9 /* TasksView.swift */,
 				2611FD8E274265D1004DF7E9 /* TrackerView.swift */,
 				2611FD8C274265BB004DF7E9 /* AwardsView.swift */,
+				A6E0BE5527427BBE00AE8222 /* AwardDetails.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E0BE5627427BBE00AE8222 /* AwardDetails.swift in Sources */,
 				2611FD7C2742579D004DF7E9 /* TasksView.swift in Sources */,
 				2611FD7A2742579D004DF7E9 /* SpacePod15App.swift in Sources */,
 				2611FD8D274265BB004DF7E9 /* AwardsView.swift in Sources */,
