@@ -9,8 +9,10 @@ import SwiftUI
 
 struct TasksView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            Text("Hello, world!")
+                .padding()
+        }.navigationTitle("Tasks")
     }
 }
 
