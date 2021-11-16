@@ -73,21 +73,32 @@ struct AwardRow: View {
     }
 }
 
+
+
 struct AwardImageView: View {
+    
+    @State var newView = false
     let award: Award
     var body: some View {
+        
         VStack {
+            Button(action: {
+                self.newView.toggle()
+            }){
             Image("testAward")
                 .resizable()
                 .scaledToFit()
+                .frame(width: 90, height: 90)
+                .padding(.trailing, 10)
+                .background(Color(red: 0.951, green: 0.951, blue: 0.98, opacity: 1.0))
+                .cornerRadius(20)
+                .shadow(radius: 5, x: 5, y: 5)
+            }.sheet(isPresented: $newView){
+                AwardDetails()
+                }
+            }
         }
-        .frame(width: 90, height: 90)
-        .padding(.trailing, 10)
-        .background(Color(red: 0.951, green: 0.951, blue: 0.98, opacity: 1.0))
-        .cornerRadius(20)
-        .shadow(radius: 5, x: 5, y: 5)
     }
-}
 
 struct AwardsView_Previews: PreviewProvider {
     static var previews: some View {
