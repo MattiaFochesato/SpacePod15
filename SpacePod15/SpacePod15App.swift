@@ -10,7 +10,7 @@ import SwiftUI
 @main
 
 struct SpacePod15App: App {
-    @StateObject var tasksManager = TasksManager()
+    @StateObject var dataManager = DataManager()
     
     var body: some Scene {
         WindowGroup {

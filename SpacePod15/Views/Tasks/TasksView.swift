@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct TasksView: View {
-    @EnvironmentObject var tasksManager: TasksManager
+    @EnvironmentObject var dataManager: DataManager
     
     @State var buttonTap = false
     var body: some View {
         NavigationView {
             ScrollView {
-                if tasksManager.tasks.count == 0 {
+                if dataManager.tasks.count == 0 {
                     VStack{
                         Text("Hurray!")
                         Text("You don’t have any task.")
                     }
                 }else{
                     VStack {
-                        ForEach(tasksManager.tasks, id: \.self) { task in
+                        ForEach(dataManager.tasks, id: \.self) { task in
                             Text(task.name)
                             Divider()
                         }
@@ -32,7 +32,7 @@ struct TasksView: View {
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button(action: {
-                        tasksManager.tasks.append(TaskInfo(name: "NewTask"))
+                        dataManager.tasks.append(TaskInfo(name: "NewTask"))
                         buttonTap.toggle()
                     }, label: {
                         Image(systemName: "plus.circle.fill" )

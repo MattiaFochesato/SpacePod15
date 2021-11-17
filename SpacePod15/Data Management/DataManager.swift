@@ -1,5 +1,5 @@
 //
-//  TasksManager.swift
+//  DataManager.swift
 //  SpacePod15
 //
 //  Created by Mattia Fochesato on 17/11/21.
@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-class TasksManager: ObservableObject {
+class DataManager: ObservableObject {
     
     //UserDefaults key for TaskInfo array
     private static let PREF_JSON_NAME = "app_json_data"
@@ -28,7 +28,7 @@ class TasksManager: ObservableObject {
     
     //Loads the data from the JSON data to restore all the tasks
     func loadDataFromJson() {
-        let jsonData = UserDefaults.standard.string(forKey: TasksManager.PREF_JSON_NAME)
+        let jsonData = UserDefaults.standard.string(forKey: DataManager.PREF_JSON_NAME)
         
         //Check jsonData is not nil and can be converted to Data
         guard let jsonData = jsonData, let jsonData = jsonData.data(using: .utf8) else {
@@ -65,7 +65,7 @@ class TasksManager: ObservableObject {
             let json = String(data: jsonData, encoding: String.Encoding.utf16)
             
             //Save the json string to UserDefaults
-            UserDefaults.standard.set(json, forKey: TasksManager.PREF_JSON_NAME)
+            UserDefaults.standard.set(json, forKey: DataManager.PREF_JSON_NAME)
         } catch {
             //Encoding failed. Show error
             print("[TasksManager] Cannot encode JSON!")
