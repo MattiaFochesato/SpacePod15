@@ -10,6 +10,8 @@ import SwiftUI
 @main
 
 struct SpacePod15App: App {
+    @StateObject var tasksManager = TasksManager()
+    
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -25,7 +27,9 @@ struct SpacePod15App: App {
                     .tabItem {
                         Label("Awards", systemImage: "dollarsign.circle")
                     }
-            }.accentColor(Color(red: 1.0, green: 0.505, blue: 0.36, opacity: 1.0))
+            }
+            .accentColor(Color(red: 1.0, green: 0.505, blue: 0.36, opacity: 1.0))
+            .environmentObject(tasksManager)
         }
     }
 }
