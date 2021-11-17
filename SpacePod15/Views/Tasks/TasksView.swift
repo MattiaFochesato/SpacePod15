@@ -13,21 +13,25 @@ struct TasksView: View {
     @State var buttonTap = false
     var body: some View {
         NavigationView {
-            ScrollView {
+            VStack {
                 if dataManager.tasks.count == 0 {
+                    
                     VStack{
                         Text("Hurray!")
                         Text("You don’t have any task.")
                     }
                 }else{
-                    VStack {
-                        ForEach(dataManager.tasks, id: \.self) { task in
-                            Text(task.name)
-                            Divider()
+                    ScrollView {
+                        VStack {
+                            ForEach(dataManager.tasks, id: \.self) { task in
+                                Text(task.name)
+                                Divider()
+                            }
                         }
                     }
                 }
             }
+            
             .navigationTitle("Tasks")
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing){
