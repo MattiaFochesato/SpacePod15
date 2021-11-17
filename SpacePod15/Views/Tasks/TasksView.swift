@@ -8,25 +8,40 @@
 import SwiftUI
 
 struct TasksView: View {
+    @EnvironmentObject var tasksManager: TasksManager
+    
     @State var buttonTap = false
     var body: some View {
         NavigationView {
-            VStack{
-                Text("Hurray!")
-                Text("You don’t have any task.")
-            }.navigationTitle("Tasks")
-                .toolbar{
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        Button(action: {
-                            buttonTap.toggle()
-                        }, label: {
-                            Image(systemName: "plus.circle.fill" )
-                        }
-                        ).sheet(isPresented: $buttonTap){
-                            EditTaskView()
+            ScrollView {
+                if tasksManager.tasks.count == 0 {
+                    VStack{
+                        Text("Hurray!")
+                        Text("You don’t have any task.")
+                    }
+                }else{
+                    VStack {
+                        ForEach(tasksManager.tasks, id: \.self) { task in
+                            Text(task.name)
+                            Divider()
                         }
                     }
                 }
+            }
+            .navigationTitle("Tasks")
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button(action: {
+                        tasksManager.tasks.append(TaskInfo(name: "NewTask"))
+                        buttonTap.toggle()
+                    }, label: {
+                        Image(systemName: "plus.circle.fill" )
+                    }
+                    ).sheet(isPresented: $buttonTap){
+                        EditTaskView()
+                    }
+                }
+            }
             
         }
     }

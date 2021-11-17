@@ -9,6 +9,9 @@ import Foundation
 import Combine
 
 
-struct TaskInfo: Codable {
+struct TaskInfo: Codable, Hashable {
+    var name: String
+    
+    
     
 }

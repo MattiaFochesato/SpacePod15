@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class TasksManager: ObservableObject {
     
@@ -14,7 +15,7 @@ class TasksManager: ObservableObject {
     private static let PREF_JSON_NAME = "app_json_data"
     
     //All the tasks of the app
-    var tasks: [TaskInfo] = []
+    @Published var tasks: [TaskInfo] = []
     
     //Init the class
     init() {
