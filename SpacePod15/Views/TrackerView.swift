@@ -8,24 +8,12 @@
 import SwiftUI
 
 struct TrackerView: View {
-    @State var buttonTap = false
     var body: some View {
         NavigationView {
             VStack{
-            Text("Hurray!")
-            Text("You don’t have any task.")
+            Text("Hey!")
             
         }.navigationTitle("Tracker")
-                .toolbar{
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        Button(action: {
-                            buttonTap.toggle()
-                        }, label: {
-                            Image(systemName: "plus.circle.fill" )
-                        }
-                               )
-                    }
-                }
             
         }
     }

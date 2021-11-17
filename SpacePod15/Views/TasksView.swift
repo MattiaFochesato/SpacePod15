@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct TasksView: View {
+    @State var buttonTap = false
     var body: some View {
         NavigationView {
             VStack{
-            Text("Hello, world!")
-                .padding()
+            Text("Hurray!")
+            Text("You don’t have any task.")
         }.navigationTitle("Tasks")
-            
+                .toolbar{
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        Button(action: {
+                            buttonTap.toggle()
+                        }, label: {
+                            Image(systemName: "plus.circle.fill" )
+                        }
+                               ).sheet(isPresented: $buttonTap){
+                            infoButton()
+                            }
+                    }
+                }
+
         }
     }
 }
