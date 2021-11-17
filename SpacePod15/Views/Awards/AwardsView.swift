@@ -76,9 +76,9 @@ struct AwardRow: View {
 
 
 struct AwardImageView: View {
-    
     @State var newView = false
     let award: Award
+    
     var body: some View {
         
         VStack {
@@ -94,7 +94,7 @@ struct AwardImageView: View {
                 .cornerRadius(20)
                 .shadow(radius: 5, x: 5, y: 5)
             }.sheet(isPresented: $newView){
-                AwardDetails()
+                AwardDetails(newView: $newView)
                 }
             }
         }
