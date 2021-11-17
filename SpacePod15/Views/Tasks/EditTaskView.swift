@@ -1,5 +1,5 @@
 //
-//  infoButton.swift
+//  EditTaskView.swift
 //  SpacePod15
 //
 //  Created by Roberto La Croce on 16/11/21.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-struct infoButton: View {
+struct EditTaskView: View {
     var subjects = ["Italiano", "Matematica", "Latino", "Scienze"]
         @State private var selectedSubject = "Italiano"
     var body: some View {
@@ -31,8 +31,8 @@ struct infoButton: View {
     
 
 
-struct infoButton_Previews: PreviewProvider {
+struct EditTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        infoButton()
+        EditTaskView()
     }
 }

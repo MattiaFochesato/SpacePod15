@@ -11,10 +11,9 @@ struct TrackerView: View {
     var body: some View {
         NavigationView {
             VStack{
-            Text("Hey!")
-            
-        }.navigationTitle("Tracker")
-            
+                Text("Hey!")
+                
+            }.navigationTitle("Tracker")
         }
     }
 }

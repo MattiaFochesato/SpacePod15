@@ -12,9 +12,9 @@ struct TasksView: View {
     var body: some View {
         NavigationView {
             VStack{
-            Text("Hurray!")
-            Text("You don’t have any task.")
-        }.navigationTitle("Tasks")
+                Text("Hurray!")
+                Text("You don’t have any task.")
+            }.navigationTitle("Tasks")
                 .toolbar{
                     ToolbarItem(placement: .navigationBarTrailing){
                         Button(action: {
@@ -22,12 +22,12 @@ struct TasksView: View {
                         }, label: {
                             Image(systemName: "plus.circle.fill" )
                         }
-                               ).sheet(isPresented: $buttonTap){
-                            infoButton()
-                            }
+                        ).sheet(isPresented: $buttonTap){
+                            EditTaskView()
+                        }
                     }
                 }
-
+            
         }
     }
 }
