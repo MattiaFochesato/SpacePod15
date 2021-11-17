@@ -29,7 +29,7 @@ struct SpacePod15App: App {
                     }
             }
             .accentColor(Color(red: 1.0, green: 0.505, blue: 0.36, opacity: 1.0))
-            .environmentObject(tasksManager)
+            .environmentObject(dataManager)
         }
     }
 }
