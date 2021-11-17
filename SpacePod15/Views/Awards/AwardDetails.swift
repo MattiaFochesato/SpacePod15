@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AwardDetails: View {
+    @Binding var newView : Bool
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -28,12 +30,18 @@ struct AwardDetails: View {
             }
             .navigationTitle("Your Award")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: Button("Done", action: {
+                newView.toggle()
+            }))
         }
     }
 }
 
 struct AwardDetails_Previews: PreviewProvider {
+    @State static var newView = false
     static var previews: some View {
-        AwardDetails()
+        Group {
+            AwardDetails(newView: $newView)
+        }
     }
 }
