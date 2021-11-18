@@ -15,8 +15,8 @@ struct TasksView: View {
         NavigationView {
             VStack {
                 if dataManager.tasks.count == 0 {
-                    
                     VStack{
+                        Image("testAward")
                         Text("Hurray!")
                         Text("You don’t have any task.")
                     }
@@ -31,12 +31,12 @@ struct TasksView: View {
                     }
                 }
             }
-            
             .navigationTitle("Tasks")
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button(action: {
                         dataManager.tasks.append(TaskInfo(name: "NewTask"))
+                        
                         buttonTap.toggle()
                     }, label: {
                         Image(systemName: "plus.circle.fill" )

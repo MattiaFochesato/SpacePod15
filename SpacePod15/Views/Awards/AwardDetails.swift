@@ -30,7 +30,8 @@ struct AwardDetails: View {
             }
             .navigationTitle("Your Award")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button("Done", action: {
+            .navigationBarItems(trailing:
+                Button("Done", action: {
                 newView.toggle()
             }))
         }

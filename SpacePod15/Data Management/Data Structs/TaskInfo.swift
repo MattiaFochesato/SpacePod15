@@ -8,10 +8,12 @@
 import Foundation
 import Combine
 
-
-struct TaskInfo: Codable, Hashable {
+//Task Info Structure
+struct TaskInfo: Codable, Hashable, Identifiable {
+    var id: UUID
     var name: String
-    
-    
-    
+    var taskEmoji: String
+    var priority: Int
+    var completed: Bool
+    var date: Date?
 }
