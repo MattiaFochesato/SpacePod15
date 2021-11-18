@@ -39,10 +39,10 @@ struct AwardDetails: View {
 }
 
 struct AwardDetails_Previews: PreviewProvider {
-    @State static var newView = false
+    @State static var showAwardDetailsView = false
     static var previews: some View {
         Group {
-            AwardDetails(newView: $newView)
+            AwardDetails(showAwardDetailsView: $showAwardDetailsView)
         }
     }
 }

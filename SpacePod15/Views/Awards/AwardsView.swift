@@ -94,7 +94,7 @@ struct AwardImageView: View {
                 .cornerRadius(20)
                 .shadow(radius: 5, x: 5, y: 5)
             }.sheet(isPresented: $showAwardDetailsView){
-                AwardDetails($showAwardDetailsView: $showAwardDetailsView)
+                AwardDetails(showAwardDetailsView: $showAwardDetailsView)
                 }
             }
         }
