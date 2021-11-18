@@ -10,6 +10,8 @@ import SwiftUI
 
 
 struct EditTaskView: View {
+    @Binding var showEditTaskView: Bool
+    
     var subjects = ["Italiano", "Matematica", "Latino", "Scienze"]
         @State private var selectedSubject = "Italiano"
     var body: some View {
@@ -33,6 +35,6 @@ struct EditTaskView: View {
 
 struct EditTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        EditTaskView()
+        EditTaskView(showEditTaskView: .constant(true))
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AwardDetails: View {
-    @Binding var newView : Bool
+    @Binding var showAwardDetailsView : Bool
     
     var body: some View {
         NavigationView{
@@ -32,7 +32,7 @@ struct AwardDetails: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                 Button("Done", action: {
-                newView.toggle()
+                showAwardDetailsView.toggle()
             }))
         }
     }

@@ -10,7 +10,7 @@ import SwiftUI
 struct TasksView: View {
     @EnvironmentObject var dataManager: DataManager
     
-    @State var buttonTap = false
+    @State var showEditTaskView = false
     var body: some View {
         NavigationView {
             VStack {
@@ -35,14 +35,12 @@ struct TasksView: View {
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button(action: {
-                        dataManager.tasks.append(TaskInfo(name: "NewTask"))
-                        
-                        buttonTap.toggle()
+                        showEditTaskView.toggle()
                     }, label: {
                         Image(systemName: "plus.circle.fill" )
                     }
-                    ).sheet(isPresented: $buttonTap){
-                        EditTaskView()
+                    ).sheet(isPresented: $showEditTaskView){
+                        EditTaskView(showEditTaskView: $showEditTaskView)
                     }
                 }
             }

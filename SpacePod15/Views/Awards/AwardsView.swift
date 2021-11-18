@@ -76,14 +76,14 @@ struct AwardRow: View {
 
 
 struct AwardImageView: View {
-    @State var newView = false
+    @State var showAwardDetailsView = false
     let award: Award
     
     var body: some View {
         
         VStack {
             Button(action: {
-                self.newView.toggle()
+                self.showAwardDetailsView.toggle()
             }){
             Image("testAward")
                 .resizable()
@@ -93,8 +93,8 @@ struct AwardImageView: View {
                 .background(Color(red: 0.951, green: 0.951, blue: 0.98, opacity: 1.0))
                 .cornerRadius(20)
                 .shadow(radius: 5, x: 5, y: 5)
-            }.sheet(isPresented: $newView){
-                AwardDetails(newView: $newView)
+            }.sheet(isPresented: $showAwardDetailsView){
+                AwardDetails($showAwardDetailsView: $showAwardDetailsView)
                 }
             }
         }
