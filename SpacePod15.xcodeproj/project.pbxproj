@@ -17,12 +17,13 @@
 		2611FD8F274265D1004DF7E9 /* TrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2611FD8E274265D1004DF7E9 /* TrackerView.swift */; };
 		26CD5C4B2744FA140005EB4D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4A2744FA140005EB4D /* DataManager.swift */; };
 		26CD5C4D2744FA580005EB4D /* TaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4C2744FA580005EB4D /* TaskInfo.swift */; };
+		26CD5C4F2746606C0005EB4D /* Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4E2746606C0005EB4D /* Subjects.swift */; };
 		A67B8D7C2744081E00E099AD /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67B8D7B2744081E00E099AD /* EditTaskView.swift */; };
 		A6E0BE5627427BBE00AE8222 /* AwardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0BE5527427BBE00AE8222 /* AwardDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2611FD762742579D004DF7E9 /* SpacePod15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpacePod15.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2611FD762742579D004DF7E9 /* TaskWard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskWard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2611FD792742579D004DF7E9 /* SpacePod15App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacePod15App.swift; sourceTree = "<group>"; };
 		2611FD7B2742579D004DF7E9 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		2611FD7D2742579E004DF7E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -33,6 +34,7 @@
 		2611FD8E274265D1004DF7E9 /* TrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerView.swift; sourceTree = "<group>"; };
 		26CD5C4A2744FA140005EB4D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		26CD5C4C2744FA580005EB4D /* TaskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfo.swift; sourceTree = "<group>"; };
+		26CD5C4E2746606C0005EB4D /* Subjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
 		A67B8D7B2744081E00E099AD /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		A6E0BE5527427BBE00AE8222 /* AwardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,7 +63,7 @@
 		2611FD772742579D004DF7E9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2611FD762742579D004DF7E9 /* SpacePod15.app */,
+				2611FD762742579D004DF7E9 /* TaskWard.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				26CD5C4C2744FA580005EB4D /* TaskInfo.swift */,
+				26CD5C4E2746606C0005EB4D /* Subjects.swift */,
 			);
 			path = "Data Structs";
 			sourceTree = "<group>";
@@ -156,7 +159,7 @@
 			);
 			name = SpacePod15;
 			productName = SpacePod15;
-			productReference = 2611FD762742579D004DF7E9 /* SpacePod15.app */;
+			productReference = 2611FD762742579D004DF7E9 /* TaskWard.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26CD5C4F2746606C0005EB4D /* Subjects.swift in Sources */,
 				26CD5C4D2744FA580005EB4D /* TaskInfo.swift in Sources */,
 				A6E0BE5627427BBE00AE8222 /* AwardDetails.swift in Sources */,
 				26CD5C4B2744FA140005EB4D /* DataManager.swift in Sources */,
@@ -363,7 +367,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.spacepod15.SpacePod15;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TaskWard;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -392,7 +396,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.spacepod15.SpacePod15;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TaskWard;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -8,30 +8,32 @@
 import SwiftUI
 
 struct AwardDetails: View {
+    var award: Award
     @Binding var showAwardDetailsView : Bool
     
     var body: some View {
         NavigationView{
             VStack{
-                Text("Newton Award")
+                Text(award.name)
                     .font(.title)
                     .bold()
                 Spacer()
-                Image("testAward")
+                Image(award.imageName)
                     .resizable()
                     .scaledToFit()
                     .frame(maxHeight:400)
                 
                 Spacer()
-                Text("Premio per aver completato la tua prima task.")
+                Text(award.description)
                 Spacer()
-                Text("08/03/2020")
+                Text("08/03/2020 TODO")
+                    .foregroundColor(.gray)
                 Spacer()
             }
             .navigationTitle("Your Award")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
-                Button("Done", action: {
+                                    Button("Close", action: {
                 showAwardDetailsView.toggle()
             }))
         }
@@ -42,7 +44,10 @@ struct AwardDetails_Previews: PreviewProvider {
     @State static var showAwardDetailsView = false
     static var previews: some View {
         Group {
-            AwardDetails(showAwardDetailsView: $showAwardDetailsView)
+          AwardDetails(award:
+                            Award(name: "Demo Award", description: "Award super long description", imageName: "testAward"),
+                         showAwardDetailsView: $showAwardDetailsView
+            )
         }
     }
 }

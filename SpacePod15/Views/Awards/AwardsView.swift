@@ -7,32 +7,15 @@
 
 import SwiftUI
 
-struct SubjectAwards: Hashable {
-    var name: String
-    var awards: [Award]
-}
-
-struct Award: Hashable {
-    var imageName: String
-}
-
 struct AwardsView: View {
-    let subjects: [SubjectAwards] = [
-        SubjectAwards(name: "Italiano", awards: []),
-        SubjectAwards(name: "Geografia", awards: []),
-        SubjectAwards(name: "Boh", awards: []),
-        SubjectAwards(name: "Storia", awards: []),
-        SubjectAwards(name: "Boh", awards: []),
-        SubjectAwards(name: "Storia", awards: [])
-    ]
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
-                    ForEach(subjects, id: \.self) { item in
+                    ForEach(Subject.subjects, id: \.self) { item in
                         AwardRow(subject: item)
-                            .padding(.bottom, 16)
+                            .padding(.bottom, 8)
                     }
                 }
                 //.padding([.leading, .trailing], 16)
@@ -43,7 +26,7 @@ struct AwardsView: View {
 }
 
 struct AwardRow: View {
-    let subject: SubjectAwards
+    let subject: Subject
     var body: some View {
         Text(subject.name)
             .font(.title3)
@@ -51,24 +34,26 @@ struct AwardRow: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding([.leading, .trailing], 24)
         
-        //ScrollView {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 0) {
-                
-                
-                ForEach(["testAward", "testAward", "testAward","testAward", "testAward", "testAward"], id: \.self) {
-                    award in
-                    AwardImageView(award: Award(imageName: award))
-                        .padding(.leading, 8)
-                    Spacer()
-                }.padding(.bottom, 16)
-                    .padding(.top, 4)
-            }
-            
-            
-            
-        }.frame(maxWidth: .infinity)
-        //}
+        if subject.awards.count != 0 {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 0) {
+                    
+                    
+                    ForEach(subject.awards, id: \.self) {
+                        award in
+                        AwardImageView(award: award)
+                            .padding(.leading, 8)
+                        Spacer()
+                    }.padding(.bottom, 16)
+                        .padding(.top, 4)
+                }
+            }.frame(maxWidth: .infinity)
+        }else{
+            Text("You have not unlocked any awards for this subject.")
+                .padding([.trailing, .leading], 16)
+                .foregroundColor(.gray)
+        }
+        Divider()
         
     }
 }
@@ -85,23 +70,24 @@ struct AwardImageView: View {
             Button(action: {
                 self.showAwardDetailsView.toggle()
             }){
-            Image("testAward")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 90, height: 90)
-                .padding(.trailing, 10)
-                .background(Color(red: 0.951, green: 0.951, blue: 0.98, opacity: 1.0))
-                .cornerRadius(20)
-                .shadow(radius: 5, x: 5, y: 5)
-            }.sheet(isPresented: $showAwardDetailsView){
-                AwardDetails(showAwardDetailsView: $showAwardDetailsView)
+                Image(award.imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .padding(4)
+                    .background(Color(red: 0.951, green: 0.951, blue: 0.98, opacity: 1.0))
+                    .cornerRadius(20)
+                    .shadow(radius: 5, x: 5, y: 5)
+            }.frame(width: 90, height: 90)
+                .sheet(isPresented: $showAwardDetailsView){
+                    AwardDetails(award: award, showAwardDetailsView: $showAwardDetailsView)
                 }
-            }
         }
     }
+}
 
 struct AwardsView_Previews: PreviewProvider {
     static var previews: some View {
+        //AwardImageView(award: Award(name: "", description: "", imageName: "testAward"))
         //AwardRow(subject:  SubjectAwards(name: "🤌🏻 Italiano", awards: []))
         AwardsView()
     }
