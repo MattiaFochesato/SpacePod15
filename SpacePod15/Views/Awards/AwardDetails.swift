@@ -44,7 +44,7 @@ struct AwardDetails_Previews: PreviewProvider {
     @State static var showAwardDetailsView = false
     static var previews: some View {
         Group {
-            AwardDetails(award:
+          AwardDetails(award:
                             Award(name: "Demo Award", description: "Award super long description", imageName: "testAward"),
                          showAwardDetailsView: $showAwardDetailsView
             )
