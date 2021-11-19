@@ -18,6 +18,7 @@
 		26CD5C4B2744FA140005EB4D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4A2744FA140005EB4D /* DataManager.swift */; };
 		26CD5C4D2744FA580005EB4D /* TaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4C2744FA580005EB4D /* TaskInfo.swift */; };
 		26CD5C4F2746606C0005EB4D /* Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4E2746606C0005EB4D /* Subjects.swift */; };
+		4B2EF8452747A247007509D2 /* TappedTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2EF8442747A247007509D2 /* TappedTask.swift */; };
 		A67B8D7C2744081E00E099AD /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67B8D7B2744081E00E099AD /* EditTaskView.swift */; };
 		A6E0BE5627427BBE00AE8222 /* AwardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0BE5527427BBE00AE8222 /* AwardDetails.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		26CD5C4A2744FA140005EB4D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		26CD5C4C2744FA580005EB4D /* TaskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfo.swift; sourceTree = "<group>"; };
 		26CD5C4E2746606C0005EB4D /* Subjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
+		4B2EF8442747A247007509D2 /* TappedTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappedTask.swift; sourceTree = "<group>"; };
 		A67B8D7B2744081E00E099AD /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		A6E0BE5527427BBE00AE8222 /* AwardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 			children = (
 				2611FD7B2742579D004DF7E9 /* TasksView.swift */,
 				A67B8D7B2744081E00E099AD /* EditTaskView.swift */,
+				4B2EF8442747A247007509D2 /* TappedTask.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B2EF8452747A247007509D2 /* TappedTask.swift in Sources */,
 				26CD5C4F2746606C0005EB4D /* Subjects.swift in Sources */,
 				26CD5C4D2744FA580005EB4D /* TaskInfo.swift in Sources */,
 				A6E0BE5627427BBE00AE8222 /* AwardDetails.swift in Sources */,

@@ -157,6 +157,7 @@ struct EditTaskView: View {
                 showEditTaskView.toggle()
                 let newTask = TaskInfo(id: UUID(),subject: selectedSubject, name: taskName, taskEmoji: taskEmoji, priority: priority, completed: completed, date: (dateToggled ? date : nil))
                 dataManager.tasks.append(newTask)
+                dataManager.saveDataToJson()
             })
             )
         }

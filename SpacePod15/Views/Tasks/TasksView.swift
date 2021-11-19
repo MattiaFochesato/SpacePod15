@@ -25,6 +25,7 @@ struct TasksView: View {
                         VStack {
                             ForEach(dataManager.tasks, id: \.self) { task in
                                 Text(task.name)
+                                
                                 Divider()
                             }
                         }
