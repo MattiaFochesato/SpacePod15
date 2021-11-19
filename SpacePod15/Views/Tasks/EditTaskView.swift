@@ -53,39 +53,52 @@ struct EditTaskView: View {
                     }
                     Section(header: Text("Priority")){
                         HStack{
-                            VStack{
+                            VStack(alignment: .leading){
                                 Button {
                                     priority = 0
                                 } label: {
-                                    Label("None", systemImage: "circle.fill")
+                                    Image(systemName: "circle.fill")
                                 }
+                                .accentColor(/*@START_MENU_TOKEN@*/Color("AccentColor")/*@END_MENU_TOKEN@*/)
+                                Text("None")
+                                    .padding(.leading, -10.0)
                             }
-                            VStack{
+                            .padding(.leading, 20)
+                            .frame(maxWidth: 80)
+                            VStack(alignment: .center){
                                 Button {
                                     priority = 1
                                 } label: {
-                                    Label("None", systemImage: "circle.fill")
+                                    Image(systemName: "circle.fill")
                                 }
-                            }
-                            VStack{
+                                .accentColor(Color("AccentColor"))
+                                Text("Low")
+                            }.padding(.leading, -10)
+                            .frame(maxWidth: 100)
+                            VStack(alignment: .center){
                                 Button {
                                     priority = 2
                                 } label: {
-                                    Label("None", systemImage: "circle.fill")
+                                    Image(systemName: "circle.fill")
                                 }
-                            }
-                            VStack{
+                                .accentColor(Color("AccentColor"))
+                                Text("Medium")
+                            }.padding(.leading, -30).frame(maxWidth: 80)
+                            VStack(alignment: .center){
                                 Button {
                                     priority = 3
                                 } label: {
-                                    Label("None", systemImage: "circle.fill")
+                                    Image(systemName: "circle.fill")
                                 }
-                            }
+                                .accentColor(Color("AccentColor"))
+                                Text("High")
+                            }.padding(.leading, -30)
+                            .frame(maxWidth: 80)
                         }
+                        
                     }
                     Section {
                         Toggle("Date", isOn: $dateToggled)
-                        
                         if dateToggled {
                             DatePicker(
                                 "",
@@ -94,7 +107,7 @@ struct EditTaskView: View {
                             )
                         }
                     }
-                }
+                }.listStyle(InsetGroupedListStyle())
             }
             .navigationTitle("New Task")
             .navigationBarTitleDisplayMode(.inline)
