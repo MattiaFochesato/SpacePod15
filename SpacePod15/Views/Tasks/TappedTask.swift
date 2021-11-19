@@ -16,7 +16,7 @@ struct TappedTask: View {
     @State private var priority: TaskPriority = .noPriority
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             VStack {
                 List {
                     Section {
@@ -96,15 +96,15 @@ struct TappedTask: View {
                         }
                     }
                 }.listStyle(InsetGroupedListStyle())
-            }
-            .navigationTitle("Tasks")
-            .navigationBarItems(trailing:
+            //}
+            .navigationBarTitle(Text("Task Info"), displayMode: .inline)
+            /*.navigationBarItems(trailing:
                                     Button(action: {
                 
             }, label: {
                 Text("Done")
             })
-            )
+            )*/
         }
     }
 }

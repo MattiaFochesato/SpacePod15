@@ -25,7 +25,7 @@ struct TasksView: View {
                         VStack(spacing: 0) {
                             ForEach(dataManager.tasks, id: \.self) { task in
                               NavigationLink {
-                                    EditTaskView(showEditTaskView: .constant(true))//TODO
+                                    TappedTask(task: task)
                                 } label: {
                                     TaskRow(task: task)
                                         .cornerRadius(10)
