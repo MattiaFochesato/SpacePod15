@@ -81,6 +81,7 @@ struct AwardImageView: View {
                 .sheet(isPresented: $showAwardDetailsView){
                     AwardDetails(award: award, showAwardDetailsView: $showAwardDetailsView)
                 }
+                .buttonStyle(ScaleButtonStyle())
         }
     }
 }
