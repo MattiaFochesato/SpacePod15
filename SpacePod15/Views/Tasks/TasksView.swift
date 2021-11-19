@@ -24,7 +24,7 @@ struct TasksView: View {
                     ScrollView {
                         VStack(spacing: 0) {
                             ForEach(dataManager.tasks, id: \.self) { task in
-                                NavigationLink {
+                              NavigationLink {
                                     EditTaskView(showEditTaskView: .constant(true))//TODO
                                 } label: {
                                     TaskRow(task: task)
@@ -33,7 +33,6 @@ struct TasksView: View {
                                         .padding([.top, .bottom], 10)
                                         .shadow(radius: 10)
                                 }.buttonStyle(ScaleButtonStyle())
-
                             }
                         }
                     }
