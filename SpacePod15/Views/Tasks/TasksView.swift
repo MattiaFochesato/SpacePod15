@@ -22,10 +22,18 @@ struct TasksView: View {
                     }
                 }else{
                     ScrollView {
-                        VStack {
+                        VStack(spacing: 0) {
                             ForEach(dataManager.tasks, id: \.self) { task in
-                                Text(task.name)
-                                Divider()
+                                NavigationLink {
+                                    EditTaskView(showEditTaskView: .constant(true))//TODO
+                                } label: {
+                                    TaskRow(task: task)
+                                        .cornerRadius(10)
+                                        .padding([.leading, .trailing])
+                                        .padding([.top, .bottom], 10)
+                                        .shadow(radius: 10)
+                                }.buttonStyle(ScaleButtonStyle())
+
                             }
                         }
                     }
@@ -49,9 +57,41 @@ struct TasksView: View {
     }
 }
 
+struct TaskRow: View {
+    var task: TaskInfo
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Spacer()
+                
+                if task.priority != .noPriority {
+                    Image(systemName: "exclamationmark\(task.priority != .low ? ".\(task.priority.rawValue)" : "")")
+                        .resizable()
+                        .font(Font.title.weight(.bold))
+                        .foregroundColor(.white)
+                              .aspectRatio(contentMode: .fit)
+                              .frame(width: 20, height: 20)
+                              .frame(width: 40, height: 40)
+                              .background(Color.secondary)
+                              .clipShape(Circle())
+                              .padding([.trailing, .top], 8)
+                }
+                
+            }
+            Spacer()
+            Text(task.name)
+                .font(.title)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding([.leading, .bottom], 16)
+        }.frame(height: 150)
+            .frame(maxWidth: .infinity)
+            .background(.gray)
+    }
+}
+
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
         TasksView()
-            .environmentObject(DataManager())
+            .environmentObject(DataManager().getDemoDataManager())
     }
 }

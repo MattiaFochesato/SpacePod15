@@ -26,6 +26,12 @@ class DataManager: ObservableObject {
         
     }
     
+    func getDemoDataManager() -> DataManager {
+        tasks.append(TaskInfo(id: UUID(), subject: "Italiano", name: "Studia Dante", taskEmoji: "🤌🏻", priority: .low, completed: false, date: nil))
+        tasks.append(TaskInfo(id: UUID(), subject: "Italiano", name: "Studia Dante", taskEmoji: "🤌🏻", priority: .low, completed: false, date: nil))
+        return self
+    }
+    
     //Loads the data from the JSON data to restore all the tasks
     func loadDataFromJson() {
         let jsonData = UserDefaults.standard.string(forKey: DataManager.PREF_JSON_NAME)
