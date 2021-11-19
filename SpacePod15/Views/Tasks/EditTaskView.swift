@@ -15,23 +15,24 @@ struct EditTaskView: View {
     
     @Binding var showEditTaskView : Bool
     
-    @State private var name: String = ""
-    @State private var taskEmoji: String = ""
-    @State private var priority: Int = 0
-    @State private var completed: Bool = false
-    @State private var date = Date()
-    
-    @State private var dateToggled = false
     
     var subjects = ["Italiano", "Matematica", "Latino", "Scienze"]
-    @State private var selectedSubject = "Italiano"
     
-    @State private var text : String = ""
+    @State private var selectedSubject = ""
+    @State private var taskName: String = ""
+    @State private var taskEmoji: String = ""
+    
+    @State private var priority: TaskPriority = .noPriority
+    
+    @State private var dateToggled = false
+    @State private var date = Date()
+    
+    @State private var completed: Bool = false
     
     var body: some View {
         
         NavigationView {
-            VStack{
+            VStack(spacing: 0){
                 Picker("Please choose a subject", selection: $selectedSubject) {
                     ForEach(subjects, id: \.self) {
                         Text($0)
@@ -39,53 +40,106 @@ struct EditTaskView: View {
                 }
                 .pickerStyle(.wheel)
                 .background(Color(red: 0.951, green: 0.951, blue: 0.98, opacity: 1.0))
-                .cornerRadius(20)
-                .shadow(radius: 5, x: 5, y: 5)
-                Spacer()
+                //.cornerRadius(20)
+                //.shadow(radius: 5, x: 5, y: 5)
                 List {
                     Section{
                         HStack {
-                            EmojiTextField(text: $text, placeholder: "..")
+                            EmojiTextField(text: $taskEmoji, placeholder: "🤌🏻")
                                 .frame(maxWidth: 40)
                             
-                            TextField("Insert the Task Name", text: $name)
+                            TextField("Task Name", text: $taskName)
                         }
                     }
                     Section(header: Text("Priority")){
-                        HStack{
-                            VStack{
+                        HStack(spacing: 0){
+                            VStack(alignment: .leading){
                                 Button {
-                                    priority = 0
+                                    priority = .noPriority
                                 } label: {
-                                    Label("None", systemImage: "circle.fill")
-                                }
-                            }
-                            VStack{
+                                    
+                                    VStack {
+                                        
+                                        ZStack {
+                                            Circle()
+                                                .foregroundColor(priority == .noPriority ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                            
+                                            Image(systemName: "nosign")
+                                                .resizable()
+                                                .foregroundColor(.white)
+                                                .frame(width: 30, height: 30)
+                                        }
+                                        .frame(width: 45, height: 45)
+                                        Text("None")
+                                    }
+                                }.buttonStyle(PlainButtonStyle())
+                                
+                                
+                            }.frame(minWidth: 0, maxWidth: .infinity)
+                            VStack(alignment: .center){
                                 Button {
-                                    priority = 1
+                                    priority = .low
                                 } label: {
-                                    Label("None", systemImage: "circle.fill")
-                                }
-                            }
-                            VStack{
+                                    VStack {
+                                        ZStack {
+                                            Circle()
+                                                .foregroundColor(priority == .low ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                            
+                                            Image(systemName: "nosign")
+                                                .resizable()
+                                                .foregroundColor(.white)
+                                                .frame(width: 30, height: 30)
+                                        }
+                                        .frame(width: 45, height: 45)
+                                        Text("Low")
+                                    }
+                                }.buttonStyle(PlainButtonStyle())
+                            }.frame(minWidth: 0, maxWidth: .infinity)
+                            VStack(alignment: .center){
                                 Button {
-                                    priority = 2
+                                    priority = .medium
                                 } label: {
-                                    Label("None", systemImage: "circle.fill")
-                                }
-                            }
-                            VStack{
+                                    VStack {
+                                        ZStack {
+                                            Circle()
+                                                .foregroundColor(priority == .medium ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                            
+                                            Image(systemName: "nosign")
+                                                .resizable()
+                                                .foregroundColor(.white)
+                                                .frame(width: 30, height: 30)
+                                        }
+                                        .frame(width: 45, height: 45)
+                                        Text("Medium")
+                                    }
+                                }.buttonStyle(PlainButtonStyle())
+                                
+                            }.frame(minWidth: 0, maxWidth: .infinity)
+                            VStack(alignment: .center){
                                 Button {
-                                    priority = 3
+                                    priority = .high
                                 } label: {
-                                    Label("None", systemImage: "circle.fill")
-                                }
-                            }
+                                    VStack {
+                                        ZStack {
+                                            Circle()
+                                                .foregroundColor(priority == .high ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                            
+                                            Image(systemName: "nosign")
+                                                .resizable()
+                                                .foregroundColor(.white)
+                                                .frame(width: 30, height: 30)
+                                        }
+                                        .frame(width: 45, height: 45)
+                                        Text("High")
+                                    }
+                                }.buttonStyle(PlainButtonStyle())
+                                
+                            }.frame(minWidth: 0, maxWidth: .infinity)
                         }
+                        
                     }
                     Section {
                         Toggle("Date", isOn: $dateToggled)
-                        
                         if dateToggled {
                             DatePicker(
                                 "",
@@ -94,16 +148,17 @@ struct EditTaskView: View {
                             )
                         }
                     }
-                }
+                }.listStyle(InsetGroupedListStyle())
             }
             .navigationTitle("New Task")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                                     Button("Done", action: {
                 showEditTaskView.toggle()
-                let newTask = TaskInfo(id: UUID(), name: name, taskEmoji: taskEmoji, priority: priority, completed: completed, date: date)
+                let newTask = TaskInfo(id: UUID(),subject: selectedSubject, name: taskName, taskEmoji: taskEmoji, priority: priority, completed: completed, date: (dateToggled ? date : nil))
                 dataManager.tasks.append(newTask)
-            }))
+            })
+            )
         }
     }
 }
@@ -166,18 +221,6 @@ struct EmojiTextField: UIViewRepresentable {
         }
     }
 }
-
-struct EmojiContentView: View {
-    
-    @State private var text: String = ""
-    
-    var body: some View {
-        EmojiTextField(text: $text, placeholder: "Enter emoji")
-    }
-}
-
-
-
 
 struct EditTaskView_Previews: PreviewProvider {
     static var previews: some View {

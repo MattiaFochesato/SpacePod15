@@ -28,7 +28,7 @@ struct SpacePod15App: App {
                         Label("Awards", systemImage: "dollarsign.circle")
                     }
             }
-            .accentColor(Color(red: 1.0, green: 0.505, blue: 0.36, opacity: 1.0))
+            .accentColor(Color("AccentColor"))
             .environmentObject(dataManager)
         }
     }

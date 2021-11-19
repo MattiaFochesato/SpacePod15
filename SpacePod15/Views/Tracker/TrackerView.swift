@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TrackerView: View {
+    @EnvironmentObject var dataManager: DataManager
+    
     var body: some View {
         NavigationView {
             VStack{
