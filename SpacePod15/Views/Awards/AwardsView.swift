@@ -14,8 +14,10 @@ struct AwardsView: View {
             ScrollView {
                 VStack {
                     ForEach(Subject.subjects, id: \.self) { item in
-                        AwardRow(subject: item)
-                            .padding(.bottom, 8)
+                        if item.awards.count != 0 {
+                            AwardRow(subject: item)
+                                .padding(.bottom, 8)
+                        }
                     }
                 }
                 //.padding([.leading, .trailing], 16)
