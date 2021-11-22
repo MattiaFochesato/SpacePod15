@@ -33,10 +33,17 @@ struct TrackerView: View {
                         }
                     }else{
                         ScrollView {
-                            VStack {
+                            VStack(spacing: 0) {
                                 ForEach(dataManager.tasks, id: \.self) { task in
-                                    Text(task.name)
-                                    Divider()
+                                  NavigationLink {
+                                        TappedTask(task: task)
+                                    } label: {
+                                        TaskRow(task: task)
+                                            .cornerRadius(10)
+                                            .padding([.leading, .trailing])
+                                            .padding([.top, .bottom], 10)
+                                            .shadow(radius: 10)
+                                    }.buttonStyle(ScaleButtonStyle())
                                 }
                             }
                         }

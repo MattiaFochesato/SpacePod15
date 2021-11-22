@@ -50,7 +50,7 @@ class DataManager: ObservableObject {
             self.tasks = try jsonDecoder.decode([TaskInfo].self, from: jsonData)
         }catch {
             //Decoding failed. Show error and return
-            print("[TasksManager] Cannot decode JSON")
+            print("[TasksManager] Cannot decode JSON \(error)")
             tasks = []
             return
         }
@@ -68,7 +68,7 @@ class DataManager: ObservableObject {
             let jsonData = try jsonEncoder.encode(tasks)
             
             //Extract the String from a Data object
-            let json = String(data: jsonData, encoding: String.Encoding.utf16)
+            let json = String(data: jsonData, encoding: .utf8)
             
             //Save the json string to UserDefaults
             UserDefaults.standard.set(json, forKey: DataManager.PREF_JSON_NAME)
