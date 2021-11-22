@@ -11,6 +11,9 @@ struct TasksView: View {
     @EnvironmentObject var dataManager: DataManager
     
     @State var showEditTaskView = false
+    @State var showNewAwardView = false
+    @State var newAward: Award! = Award(name: "test", description: "test", imageName: "")
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -47,11 +50,32 @@ struct TasksView: View {
                         Image(systemName: "plus.circle.fill" )
                     }
                     ).sheet(isPresented: $showEditTaskView){
-                        EditTaskView(showEditTaskView: $showEditTaskView)
+                        EditTaskView(showEditTaskView: $showEditTaskView, taskToEdit: nil)
                     }
                 }
             }
             
+        }.onChange(of: dataManager.unlockedAwards) { unlockedAwards in
+            print("Unlocked awards!")
+            let newAward = unlockedAwards.sorted { aw1, aw2 in
+                aw1.date > aw2.date
+            }.first!
+            
+            for sub in Subject.subjects {
+                for aw in sub.awards {
+                    if aw.imageName == newAward.awardName {
+                        dataManager.lastUnlockedAward = aw
+                        break
+                    }
+                }
+            }
+            
+            
+            self.showNewAwardView = true
+        }.sheet(isPresented: $showNewAwardView) {
+            HalfSheet {
+                AwardDetails(award: dataManager.lastUnlockedAward, isJustUnlocked: true, showAwardDetailsView: $showNewAwardView)
+            }
         }
     }
 }
@@ -64,7 +88,7 @@ struct TaskRow: View {
                 Spacer()
                 
                 //if task.priority != .noPriority {
-                    Image(systemName: "exclamationmark\(task.priority != .low ? ".\(task.priority.rawValue+1)" : "")")
+                Image(systemName: (task.completed ? "checkmark" : "exclamationmark\(task.priority != .low ? ".\(task.priority.rawValue+1)" : "")"))
                         .resizable()
                         .font(Font.title.weight(.bold))
                         .foregroundColor(.white)
