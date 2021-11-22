@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UnlockedAward: Codable {
+struct UnlockedAward: Codable, Equatable {
     var awardName: String
     var date: Date
 }

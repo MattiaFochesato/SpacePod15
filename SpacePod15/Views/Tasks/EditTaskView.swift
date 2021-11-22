@@ -15,8 +15,9 @@ struct EditTaskView: View {
     
     @Binding var showEditTaskView : Bool
     
+    private var taskToEdit: TaskInfo? = nil
     
-    var subjects = ["Italiano", "Matematica", "Latino", "Scienze"]
+    var subjects = Subject.subjects.map { subject in subject.name }
     
     @State private var selectedSubject = ""
     @State private var taskName: String = ""
@@ -25,12 +26,28 @@ struct EditTaskView: View {
     @State private var priority: TaskPriority = .low
     
     @State private var dateToggled = false
-    @State private var date = Date()
+    @State private var date: Date = Date()
     
     @State private var completed: Bool = false
     
-    var body: some View {
+    init(showEditTaskView: Binding<Bool>, taskToEdit: TaskInfo?) {
+        self._showEditTaskView = showEditTaskView
         
+        self.taskToEdit = taskToEdit
+        
+        if let taskToEdit = taskToEdit {
+            self._selectedSubject = State(initialValue: taskToEdit.subject)
+            self._taskName = State(initialValue: taskToEdit.name)
+            self._taskEmoji = State(initialValue: taskToEdit.taskEmoji)
+            self._priority = State(initialValue: taskToEdit.priority)
+            self._date = State(initialValue: taskToEdit.date ?? Date())
+            self._dateToggled = State(initialValue: (taskToEdit.date != nil))
+            self._completed = State(initialValue: taskToEdit.completed)
+        }
+        
+    }
+    
+    var body: some View {
         NavigationView {
             VStack(spacing: 0){
                 Picker("Please choose a subject", selection: $selectedSubject) {
@@ -118,7 +135,7 @@ struct EditTaskView: View {
                     }
                     Section {
                         Toggle("Date", isOn: $dateToggled)
-                        if dateToggled {
+                        if dateToggled{
                             DatePicker(
                                 "",
                                 selection: $date,
@@ -128,14 +145,19 @@ struct EditTaskView: View {
                     }
                 }.listStyle(InsetGroupedListStyle())
             }
-            .navigationTitle("New Task")
+            .navigationTitle(taskToEdit != nil ? "Edit Task" : "New Task")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                                     Button("Done", action: {
                 showEditTaskView.toggle()
-                let newTask = TaskInfo(id: UUID(),subject: selectedSubject, name: taskName, taskEmoji: taskEmoji, priority: priority, completed: completed, date: (dateToggled ? date : nil))
-                dataManager.tasks.append(newTask)
-                dataManager.saveDataToJson()
+                let newTask = TaskInfo(id: (taskToEdit == nil ? UUID() : taskToEdit!.id),subject: selectedSubject, name: taskName, taskEmoji: taskEmoji, priority: priority, completed: completed, date: (dateToggled ? date : nil))
+                
+                if taskToEdit == nil {
+                    dataManager.tasks.append(newTask)
+                    dataManager.saveDataToJson()
+                }else{
+                    dataManager.update(task: newTask)
+                }
             })
             )
         }
@@ -203,6 +225,6 @@ struct EmojiTextField: UIViewRepresentable {
 
 struct EditTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        EditTaskView(showEditTaskView: .constant(true))
+        EditTaskView(showEditTaskView: .constant(true), taskToEdit: nil)
     }
 }
