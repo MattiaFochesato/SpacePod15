@@ -9,13 +9,25 @@ import SwiftUI
 
 struct AwardDetails: View {
     var award: Award
+    var isJustUnlocked: Bool = false
+    
     @Binding var showAwardDetailsView : Bool
     
     var body: some View {
         NavigationView{
-            VStack{
+            VStack(spacing: 0){
+                if isJustUnlocked {
+                LinearGradient(gradient: Gradient(colors: [.pink, .blue]),
+                               startPoint: .leading,
+                               endPoint: .trailing)
+                    .mask(Text("Congratulations!")
+                            .font(.title)
+                            .bold())
+                    .frame(height: 40)
+                    Spacer()
+                }
                 Text(award.name)
-                    .font(.title)
+                    .font(isJustUnlocked ? .title2 : .title)
                     .bold()
                 Spacer()
                 Image(award.imageName)
@@ -25,12 +37,16 @@ struct AwardDetails: View {
                 
                 Spacer()
                 Text(award.description)
-                Spacer()
-                Text("08/03/2020 TODO")
-                    .foregroundColor(.gray)
+                
+                if !isJustUnlocked {
+                    Spacer()
+                    Text("08/03/2020 TODO")
+                        .foregroundColor(.gray)
+                }
+                
                 Spacer()
             }
-            .navigationTitle("Your Award")
+            .navigationTitle(isJustUnlocked ? "New Award Unlocked" : "Your Award")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                                     Button("Close", action: {
@@ -44,10 +60,15 @@ struct AwardDetails_Previews: PreviewProvider {
     @State static var showAwardDetailsView = false
     static var previews: some View {
         Group {
-          AwardDetails(award:
-                            Award(name: "Demo Award", description: "Award super long description", imageName: "testAward"),
-                         showAwardDetailsView: $showAwardDetailsView
+            AwardDetails(award:
+                              Award(name: "Demo Award", description: "Award super long description", imageName: "testAward"),
+                           showAwardDetailsView: $showAwardDetailsView
             )
+            AwardDetails(award:
+                              Award(name: "Demo Award", description: "Award super long description", imageName: "testAward"),
+                         isJustUnlocked: true,
+                           showAwardDetailsView: $showAwardDetailsView
+            ).frame(height: 400)
         }
     }
 }

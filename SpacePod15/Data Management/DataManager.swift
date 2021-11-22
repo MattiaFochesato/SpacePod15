@@ -79,4 +79,26 @@ class DataManager: ObservableObject {
         }
     }
     
+    //Updates the task in the shared list
+    func update(task updatedTask: TaskInfo) {
+        for index in 0..<tasks.count {
+            if tasks[index].id == updatedTask.id {
+                tasks[index] = updatedTask
+                self.saveDataToJson()
+                return
+            }
+        }
+    }
+    
+    //Delete the task from the shared list
+    func delete(task deletedTask: TaskInfo) {
+        for index in 0..<tasks.count {
+            if tasks[index].id == deletedTask.id {
+                tasks.remove(at: index)
+                self.saveDataToJson()
+                return
+            }
+        }
+    }
+    
 }

@@ -9,9 +9,12 @@ import SwiftUI
 
 struct TappedTask: View {
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State private var showingDeleteConfirmationAlert = false
+    
     @EnvironmentObject var dataManager: DataManager
     
-    var task : TaskInfo
+    @State var task : TaskInfo
     
     var body: some View {
         //NavigationView {
@@ -83,23 +86,42 @@ struct TappedTask: View {
                             }.frame(minWidth: 0, maxWidth: .infinity)
                         }
                     }
-                    Section {
-                        Button {
-                            
-                        } label: {
-                            Text("Complete Task")
-                                .foregroundColor(Color("AccentColor"))
-                                .frame(minWidth: 0, maxWidth: .infinity)
+                    if !task.completed {
+                        Section {
+                            Button {
+                                let generator = UINotificationFeedbackGenerator()
+                                generator.notificationOccurred(.success)
+                                
+                                task.completed = true
+                                dataManager.update(task: task)
+                                
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Text("Complete Task")
+                                    .foregroundColor(Color("AccentColor"))
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                            }
                         }
                     }
                     Section {
                         Button {
-                            
+                            self.showingDeleteConfirmationAlert.toggle()
                         } label: {
                             Text("Delete Task")
                                 .foregroundColor(Color(red: 0.871, green: 0.059, blue: 0.0, opacity: 1.0))
                                 .frame(minWidth: 0, maxWidth: .infinity)
+                        }.alert(isPresented: $showingDeleteConfirmationAlert) {
+                            Alert(title: Text("Warning"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete"),action:{
+                                
+                                dataManager.delete(task: task)
+                                presentationMode.wrappedValue.dismiss()
+                            }), secondaryButton: .cancel(Text("Cancel")))
+
                         }
+                        /*.alert("Wa", isPresented: $showingDeleteConfirmationAlert) {
+                            Button("First") { }
+                            Button("Second") { }
+                        }*/
                     }
                 }.listStyle(InsetGroupedListStyle())
             //}
