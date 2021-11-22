@@ -9,21 +9,16 @@ import SwiftUI
 
 struct TrackerView: View {
     @EnvironmentObject var dataManager: DataManager
-    @Environment(\.isSearching) var isSearching //
+    
     
     
     @State var searchText: String = ""
-    @State var mode: String = "Light"
+    
     var body: some View {
         NavigationView {
             //ScrollView {
             VStack {
-                Picker("Color", selection: $mode) {
-                    Text("Light").tag(0)
-                    Text("Dark").tag(1)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding([.leading, .trailing], 8)
+                SearchingFilter()
                 
                 VStack {
                     if dataManager.tasks.count == 0 {
@@ -54,6 +49,28 @@ struct TrackerView: View {
             .navigationTitle("Tracker")
             .searchable(text: $searchText)
         }
+    }
+}
+
+struct SearchingFilter: View {
+    @State var mode: Int = 0
+    
+    @Environment(\.isSearching) var isSearching
+    
+    var body: some View {
+        VStack {
+            if isSearching {
+                Picker("Filter", selection: $mode) {
+                    Text("Light").tag(0)
+                    Text("Dark").tag(1)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding([.leading, .trailing], 8)
+            }else{
+                EmptyView().frame(width: 0, height: 0)
+            }
+        }
+        
     }
 }
 
