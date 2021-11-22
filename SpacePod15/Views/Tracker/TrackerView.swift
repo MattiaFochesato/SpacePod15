@@ -10,16 +10,26 @@ import SwiftUI
 struct TrackerView: View {
     @EnvironmentObject var dataManager: DataManager
     
+    @State var orderMode: Int = SortingFilter.byDate.rawValue
     @State var searchText: String = ""
     
     var body: some View {
         NavigationView {
-            //ScrollView {
             VStack {
-                SearchingFilter()
-                
+                let dataToShow = filterData()
+                if dataToShow.count != 0 {
+                    /*Picker("Order By", selection: $orderMode) {
+                        Text("Date").tag(SortingFilter.byDate.rawValue)
+                        Text("Subject").tag(SortingFilter.bySubject.rawValue)
+                        //Text("Priority").tag(SortingFilter.byPriority.rawValue)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding([.leading, .trailing], 8)*/
+                    SearchingFilter(mode: $orderMode)
+                }
+                    
                 VStack {
-                    if dataManager.tasks.count == 0 {
+                    if dataToShow.count == 0 {
                         VStack{
                             Image("testAward")
                             Text("Hurray!")
@@ -28,7 +38,9 @@ struct TrackerView: View {
                     }else{
                         ScrollView {
                             VStack(spacing: 0) {
-                              ForEach(dataManager.tasks.filter({($0).name.contains(searchText) || searchText.isEmpty}),id:\.self){ task in
+                                
+                                
+                              ForEach(dataToShow,id:\.self){ task in
                                   NavigationLink {
                                         TappedTask(task: task)
                                     } label: {
@@ -44,23 +56,49 @@ struct TrackerView: View {
                     }
                 }
             }
-            .navigationTitle("Tracker")
+            .navigationTitle("Journal")
             .searchable(text: $searchText)
         }
+    }
+    
+    func filterData() -> [TaskInfo] {
+        var tasksToShow = dataManager.tasks.filter({ $0.completed != nil && (($0).name.contains(searchText) || searchText.isEmpty)})
+
+        
+        switch orderMode {
+        case SortingFilter.byDate.rawValue:
+            tasksToShow = tasksToShow.sorted(by: { t1, t2 in
+                t1.date ?? Date() < t2.date ?? Date()
+            })
+        case SortingFilter.bySubject.rawValue:
+            tasksToShow = tasksToShow.sorted(by: { t1, t2 in
+                t1.subject < t2.subject
+            })
+        case SortingFilter.byPriority.rawValue:
+            tasksToShow = tasksToShow.sorted(by: { t1, t2 in
+                t1.priority.rawValue > t2.priority.rawValue
+            })
+        default:
+            break
+            
+            
+        }
+        return tasksToShow
     }
 }
 
 struct SearchingFilter: View {
-    @State var mode: Int = 0
+    @Binding var mode: Int
     
     @Environment(\.isSearching) var isSearching
     
     var body: some View {
         VStack {
             if isSearching {
-                Picker("Filter", selection: $mode) {
-                    Text("Light").tag(0)
-                    Text("Dark").tag(1)
+                Picker("Order By", selection: $mode) {
+                    Text("Date").tag(SortingFilter.byDate.rawValue)
+                    Text("Subject").tag(SortingFilter.bySubject.rawValue)
+                    //Text("Priority").tag(SortingFilter.byPriority.rawValue)
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding([.leading, .trailing], 8)
@@ -70,6 +108,12 @@ struct SearchingFilter: View {
         }
         
     }
+}
+
+enum SortingFilter: Int {
+    case byDate = 0
+    case bySubject = 1
+    case byPriority = 2
 }
 
 struct TrackerView_Previews: PreviewProvider {

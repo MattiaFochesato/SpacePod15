@@ -43,10 +43,8 @@ struct AwardRow: View {
                 HStack(spacing: 2) {
                     ForEach(subject.awards, id: \.self) {
                         award in
-                        let isUnlocked = dataManager.unlockedAwards.filter { unlockedAward in
-                            unlockedAward.awardName == award.imageName
-                        }.count != 0
-                        AwardImageView(award: award, unlocked: isUnlocked)
+                        
+                        AwardImageView(award: award, unlocked: getUnlockDate(award))
                             .padding(.leading, 8)
                         Spacer()
                     }.padding(.bottom, 16)
@@ -61,6 +59,19 @@ struct AwardRow: View {
         Divider()
         
     }
+    
+    func getUnlockDate(_ award: Award) -> Date? {
+        let unlocks = dataManager.unlockedAwards.filter { unlockedAward in
+            unlockedAward.awardName == award.imageName
+        }
+        
+        var unlockDate: Date? = nil
+        if unlocks.count != 0 {
+            unlockDate = unlocks.first!.date
+        }
+        
+        return unlockDate
+    }
 }
 
 
@@ -68,13 +79,13 @@ struct AwardRow: View {
 struct AwardImageView: View {
     @State var showAwardDetailsView = false
     let award: Award
-    let unlocked: Bool
+    let unlocked: Date?
     
     var body: some View {
         
         VStack {
             Button(action: {
-                if unlocked {
+                if unlocked != nil {
                     self.showAwardDetailsView.toggle()
                 } else {
                     let generator = UINotificationFeedbackGenerator()
@@ -86,13 +97,13 @@ struct AwardImageView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 90, height: 90)
-                        .grayscale(unlocked ? 0.0 : 1.0)
-                        .blur(radius: unlocked ? 0 : 4)
+                        .grayscale(unlocked != nil ? 0.0 : 1.0)
+                        .blur(radius: unlocked != nil ? 0 : 4)
                         .padding(4)
                         .background(Color(red: 0.951, green: 0.951, blue: 0.98, opacity: 1.0))
                         .cornerRadius(20)
                         .shadow(radius: 5, x: 5, y: 5)
-                    if !unlocked {
+                    if unlocked == nil {
                         Image(systemName: "lock.fill")
                             .font(.system(size: 40).bold())
                     }
@@ -100,7 +111,7 @@ struct AwardImageView: View {
                     
             }.frame(width: 90, height: 90)
                 .sheet(isPresented: $showAwardDetailsView){
-                    AwardDetails(award: award, showAwardDetailsView: $showAwardDetailsView)
+                    AwardDetails(award: award, unlockDate: unlocked,showAwardDetailsView: $showAwardDetailsView)
                 }
                 .buttonStyle(ScaleButtonStyle())
                 

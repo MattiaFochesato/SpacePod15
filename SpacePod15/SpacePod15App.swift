@@ -17,15 +17,15 @@ struct SpacePod15App: App {
             TabView {
                 TasksView()
                     .tabItem {
-                        Label("Tasks", systemImage: "list.dash")
+                        Label("Tasks", systemImage: "checklist")
                     }
                 TrackerView()
                     .tabItem {
-                        Label("Traker", systemImage: "checklist")
+                        Label("Journal", systemImage: "book.closed.fill")
                     }
                 AwardsView()
                     .tabItem {
-                        Label("Awards", systemImage: "cup.and.saucer.fill")
+                        Label("Awards", systemImage: "sparkle")
                     }
             }
             .accentColor(Color("AccentColor"))

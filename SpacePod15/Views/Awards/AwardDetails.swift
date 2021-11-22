@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AwardDetails: View {
     var award: Award
+    var unlockDate: Date?
     var isJustUnlocked: Bool = false
     
     @Binding var showAwardDetailsView : Bool
@@ -40,7 +41,7 @@ struct AwardDetails: View {
                 
                 if !isJustUnlocked {
                     Spacer()
-                    Text("08/03/2020 TODO")
+                    Text((unlockDate ?? Date()).prettyPrint())
                         .foregroundColor(.gray)
                 }
                 

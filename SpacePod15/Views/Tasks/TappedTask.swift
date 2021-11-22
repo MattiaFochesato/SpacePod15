@@ -75,13 +75,13 @@ struct TappedTask: View {
                             }.frame(minWidth: 0, maxWidth: .infinity)
                         }
                     }
-                    if !task.completed {
+                    if task.completed == nil {
                         Section {
                             Button {
                                 let generator = UINotificationFeedbackGenerator()
                                 generator.notificationOccurred(.success)
                                 
-                                task.completed = true
+                                task.completed = Date()
                                 dataManager.update(task: task)
                                 
                                 presentationMode.wrappedValue.dismiss()
@@ -134,6 +134,6 @@ struct TappedTask: View {
 
 struct TappedTask_Previews: PreviewProvider {
     static var previews: some View {
-        TappedTask(task: TaskInfo(id: UUID(), subject: "Italiano", name: "Studia Foscolo", taskEmoji: "📕", priority: .medium, completed: false, date: Date()))
+        TappedTask(task: TaskInfo(id: UUID(), subject: "Italiano", name: "Studia Foscolo", taskEmoji: "📕", priority: .medium, completed: nil, date: Date()))
     }
 }

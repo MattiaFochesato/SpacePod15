@@ -16,6 +16,7 @@
 		2611FD8D274265BB004DF7E9 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2611FD8C274265BB004DF7E9 /* AwardsView.swift */; };
 		2611FD8F274265D1004DF7E9 /* TrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2611FD8E274265D1004DF7E9 /* TrackerView.swift */; };
 		264EE0F4274BB6EF00317578 /* HalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264EE0F3274BB6EF00317578 /* HalfSheet.swift */; };
+		26673D66274BEFC4004E0174 /* ExyteGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 26673D65274BEFC4004E0174 /* ExyteGrid */; };
 		2698A4B327481B5C00C1CCA2 /* ScaleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2698A4B227481B5C00C1CCA2 /* ScaleButtonStyle.swift */; };
 		2698A4B5274B938500C1CCA2 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2698A4B4274B938500C1CCA2 /* Date+Extensions.swift */; };
 		2698A4B7274BA31C00C1CCA2 /* UnlockedAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2698A4B6274BA31C00C1CCA2 /* UnlockedAward.swift */; };
@@ -54,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26673D66274BEFC4004E0174 /* ExyteGrid in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +183,9 @@
 			dependencies = (
 			);
 			name = SpacePod15;
+			packageProductDependencies = (
+				26673D65274BEFC4004E0174 /* ExyteGrid */,
+			);
 			productName = SpacePod15;
 			productReference = 2611FD762742579D004DF7E9 /* TaskWard.app */;
 			productType = "com.apple.product-type.application";
@@ -209,6 +214,9 @@
 				Base,
 			);
 			mainGroup = 2611FD6D2742579D004DF7E9;
+			packageReferences = (
+				26673D64274BEFC3004E0174 /* XCRemoteSwiftPackageReference "Grid" */,
+			);
 			productRefGroup = 2611FD772742579D004DF7E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -453,6 +461,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		26673D64274BEFC3004E0174 /* XCRemoteSwiftPackageReference "Grid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/Grid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		26673D65274BEFC4004E0174 /* ExyteGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26673D64274BEFC3004E0174 /* XCRemoteSwiftPackageReference "Grid" */;
+			productName = ExyteGrid;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2611FD6E2742579D004DF7E9 /* Project object */;
 }

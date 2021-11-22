@@ -19,7 +19,7 @@ struct EditTaskView: View {
     
     var subjects = Subject.subjects.map { subject in subject.name }
     
-    @State private var selectedSubject = ""
+    @State private var selectedSubject = Subject.subjects.first!.name
     @State private var taskName: String = ""
     @State private var taskEmoji: String = ""
     
@@ -28,7 +28,7 @@ struct EditTaskView: View {
     @State private var dateToggled = false
     @State private var date: Date = Date()
     
-    @State private var completed: Bool = false
+    //@State private var completed: Bool? = Date()
     
     init(showEditTaskView: Binding<Bool>, taskToEdit: TaskInfo?) {
         self._showEditTaskView = showEditTaskView
@@ -42,7 +42,7 @@ struct EditTaskView: View {
             self._priority = State(initialValue: taskToEdit.priority)
             self._date = State(initialValue: taskToEdit.date ?? Date())
             self._dateToggled = State(initialValue: (taskToEdit.date != nil))
-            self._completed = State(initialValue: taskToEdit.completed)
+            //self._completed = State(initialValue: taskToEdit.completed)
         }
         
     }
@@ -61,12 +61,12 @@ struct EditTaskView: View {
                 //.shadow(radius: 5, x: 5, y: 5)
                 List {
                     Section{
-                        HStack {
+                        /*HStack {
                             EmojiTextField(text: $taskEmoji, placeholder: "🤌🏻")
                                 .frame(maxWidth: 40)
-                            
+                            */
                             TextField("Task Name", text: $taskName)
-                        }
+                        //}
                     }
                     Section(header: Text("Priority")){
                         HStack(spacing: 0){
@@ -150,7 +150,7 @@ struct EditTaskView: View {
             .navigationBarItems(trailing:
                                     Button("Done", action: {
                 showEditTaskView.toggle()
-                let newTask = TaskInfo(id: (taskToEdit == nil ? UUID() : taskToEdit!.id),subject: selectedSubject, name: taskName, taskEmoji: taskEmoji, priority: priority, completed: completed, date: (dateToggled ? date : nil))
+                let newTask = TaskInfo(id: (taskToEdit == nil ? UUID() : taskToEdit!.id),subject: selectedSubject, name: taskName, taskEmoji: taskEmoji, priority: priority, completed: nil, date: (dateToggled ? date : nil))
                 
                 if taskToEdit == nil {
                     dataManager.tasks.append(newTask)

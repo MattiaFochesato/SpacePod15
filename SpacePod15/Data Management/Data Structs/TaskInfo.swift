@@ -15,7 +15,7 @@ struct TaskInfo: Codable, Hashable, Identifiable {
     var name: String
     var taskEmoji: String
     var priority: TaskPriority
-    var completed: Bool
+    var completed: Date?
     var date: Date?
 }
 

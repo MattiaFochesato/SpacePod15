@@ -12,7 +12,7 @@ import SwiftUI
 class DataManager: ObservableObject {
     
     //UserDefaults key for TaskInfo array
-    private static let PREF_JSON_NAME = "app_json_data1"
+    private static let PREF_JSON_NAME = "app_json_data2"
     
     //All the tasks of the app
     @Published var tasks: [TaskInfo] = []
@@ -32,8 +32,8 @@ class DataManager: ObservableObject {
     }
     
     func getDemoDataManager() -> DataManager {
-        tasks.append(TaskInfo(id: UUID(), subject: "Italiano", name: "Studia Dante", taskEmoji: "🤌🏻", priority: .low, completed: false, date: nil))
-        tasks.append(TaskInfo(id: UUID(), subject: "Storia", name: "Studia Ciccio Gamer", taskEmoji: "🤌🏻", priority: .low, completed: false, date: nil))
+        tasks.append(TaskInfo(id: UUID(), subject: "Italiano", name: "Studia Dante", taskEmoji: "🤌🏻", priority: .low, completed: Date(), date: nil))
+        tasks.append(TaskInfo(id: UUID(), subject: "Storia", name: "Studia Ciccio Gamer", taskEmoji: "🤌🏻", priority: .low, completed: nil, date: Date()))
         return self
     }
     
