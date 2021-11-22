@@ -54,15 +54,6 @@ struct TrackerView: View {
             }
             .navigationTitle("Tracker")
             .searchable(text: $searchText)
-            /*.toolbar {
-                ToolbarItem(placement: .principal) {
-                    Picker("Color", selection: $mode) {
-                        Text("Light").tag(0)
-                        Text("Dark").tag(1)
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
-            }*/
         }
     }
 }
@@ -70,6 +61,6 @@ struct TrackerView: View {
 struct TrackerView_Previews: PreviewProvider {
     static var previews: some View {
         TrackerView()
-            .environmentObject(DataManager())
+            .environmentObject(DataManager().getDemoDataManager())
     }
 }

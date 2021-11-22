@@ -12,10 +12,15 @@ import SwiftUI
 class DataManager: ObservableObject {
     
     //UserDefaults key for TaskInfo array
-    private static let PREF_JSON_NAME = "app_json_data"
+    private static let PREF_JSON_NAME = "app_json_data1"
     
     //All the tasks of the app
     @Published var tasks: [TaskInfo] = []
+    
+    //All the unlocked awards
+    @Published var unlockedAwards: [UnlockedAward] = []
+    
+    var lastUnlockedAward: Award!
     
     //Init the class
     init() {
@@ -23,12 +28,12 @@ class DataManager: ObservableObject {
         //Load tasks from JSON
         self.loadDataFromJson()
         
-        
+        unlockedAwards = [UnlockedAward(awardName: "testAward", date: Date())]
     }
     
     func getDemoDataManager() -> DataManager {
         tasks.append(TaskInfo(id: UUID(), subject: "Italiano", name: "Studia Dante", taskEmoji: "🤌🏻", priority: .low, completed: false, date: nil))
-        tasks.append(TaskInfo(id: UUID(), subject: "Italiano", name: "Studia Dante", taskEmoji: "🤌🏻", priority: .low, completed: false, date: nil))
+        tasks.append(TaskInfo(id: UUID(), subject: "Storia", name: "Studia Ciccio Gamer", taskEmoji: "🤌🏻", priority: .low, completed: false, date: nil))
         return self
     }
     
@@ -47,11 +52,14 @@ class DataManager: ObservableObject {
             //Native class to decode json
             let jsonDecoder = JSONDecoder()
             //Save the extracted tasks
-            self.tasks = try jsonDecoder.decode([TaskInfo].self, from: jsonData)
+            let jsonStruct = try jsonDecoder.decode(DataJSON.self, from: jsonData)
+            self.tasks = jsonStruct.tasks
+            self.unlockedAwards = jsonStruct.unlockedAwards
         }catch {
             //Decoding failed. Show error and return
             print("[TasksManager] Cannot decode JSON \(error)")
             tasks = []
+            unlockedAwards = []
             return
         }
         
@@ -64,8 +72,11 @@ class DataManager: ObservableObject {
         let jsonEncoder = JSONEncoder()
         
         do {
-            //Try to encode all the tasks to a json string
-            let jsonData = try jsonEncoder.encode(tasks)
+            //Create a struct to save on a JSON string
+            let jsonStruct = DataJSON(tasks: tasks, unlockedAwards: unlockedAwards)
+            
+            //Try to encode all the data to a json string
+            let jsonData = try jsonEncoder.encode(jsonStruct)
             
             //Extract the String from a Data object
             let json = String(data: jsonData, encoding: .utf8)
@@ -101,4 +112,9 @@ class DataManager: ObservableObject {
         }
     }
     
+}
+
+struct DataJSON: Codable {
+    var tasks: [TaskInfo]
+    var unlockedAwards: [UnlockedAward]
 }

@@ -85,6 +85,8 @@ struct TappedTask: View {
                                 dataManager.update(task: task)
                                 
                                 presentationMode.wrappedValue.dismiss()
+                                
+                                dataManager.unlockedAwards.append(UnlockedAward(awardName: "medGeografiaBronzo", date: Date()))
                             } label: {
                                 Text("Complete Task")
                                     .foregroundColor(Color("AccentColor"))

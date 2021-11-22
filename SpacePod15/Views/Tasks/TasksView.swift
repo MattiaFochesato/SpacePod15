@@ -11,6 +11,9 @@ struct TasksView: View {
     @EnvironmentObject var dataManager: DataManager
     
     @State var showEditTaskView = false
+    @State var showNewAwardView = false
+    @State var newAward: Award! = Award(name: "test", description: "test", imageName: "")
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -52,6 +55,27 @@ struct TasksView: View {
                 }
             }
             
+        }.onChange(of: dataManager.unlockedAwards) { unlockedAwards in
+            print("Unlocked awards!")
+            let newAward = unlockedAwards.sorted { aw1, aw2 in
+                aw1.date > aw2.date
+            }.first!
+            
+            for sub in Subject.subjects {
+                for aw in sub.awards {
+                    if aw.imageName == newAward.awardName {
+                        dataManager.lastUnlockedAward = aw
+                        break
+                    }
+                }
+            }
+            
+            
+            self.showNewAwardView = true
+        }.sheet(isPresented: $showNewAwardView) {
+            HalfSheet {
+                AwardDetails(award: dataManager.lastUnlockedAward, isJustUnlocked: true, showAwardDetailsView: $showNewAwardView)
+            }
         }
     }
 }
