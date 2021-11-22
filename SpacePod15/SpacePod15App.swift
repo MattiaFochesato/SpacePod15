@@ -21,11 +21,11 @@ struct SpacePod15App: App {
                     }
                 TrackerView()
                     .tabItem {
-                        Label("Traker", systemImage: "list.dash")
+                        Label("Traker", systemImage: "checklist")
                     }
                 AwardsView()
                     .tabItem {
-                        Label("Awards", systemImage: "dollarsign.circle")
+                        Label("Awards", systemImage: "cup.and.saucer.fill")
                     }
             }
             .accentColor(Color("AccentColor"))

@@ -10,8 +10,6 @@ import SwiftUI
 struct TrackerView: View {
     @EnvironmentObject var dataManager: DataManager
     
-    
-    
     @State var searchText: String = ""
     
     var body: some View {

@@ -17,16 +17,24 @@ struct TasksView: View {
     var body: some View {
         NavigationView {
             VStack {
-                if dataManager.tasks.count == 0 {
+                let tasksToShow = dataManager.tasks.filter({ task in
+                    !task.completed
+                })
+                if tasksToShow.count == 0 {
                     VStack{
-                        Image("testAward")
-                        Text("Hurray!")
-                        Text("You don’t have any task.")
+                        //Image("testAward")
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.system(size: 60).bold())
+                            .foregroundColor(Color("AccentColor"))
+                        Text("Well done!")
+                            .font(.title3)
+                            .bold()
+                        Text("You don’t have any task to complete.")
                     }
                 }else{
                     ScrollView {
                         VStack(spacing: 0) {
-                            ForEach(dataManager.tasks, id: \.self) { task in
+                            ForEach(tasksToShow, id: \.self) { task in
                               NavigationLink {
                                     TappedTask(task: task)
                                 } label: {
