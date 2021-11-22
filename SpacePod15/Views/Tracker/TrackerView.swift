@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TrackerView: View {
     @EnvironmentObject var dataManager: DataManager
+    @Environment(\.isSearching) var isSearching //
     
     
     @State var searchText: String = ""
@@ -34,9 +35,7 @@ struct TrackerView: View {
                     }else{
                         ScrollView {
                             VStack(spacing: 0) {
-                                ForEach(dataManager.tasks.filter({ task in
-                                    task.completed
-                                }), id: \.self) { task in
+                              ForEach(dataManager.tasks.filter({($0).name.contains(searchText) || searchText.isEmpty}),id:\.self){ task in
                                   NavigationLink {
                                         TappedTask(task: task)
                                     } label: {
