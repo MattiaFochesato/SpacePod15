@@ -91,7 +91,7 @@ struct TappedTask: View {
                             
                         } label: {
                             Text("Delete Task")
-                                .foregroundColor(Color(red: 0.871, green: 0.059, blue: 0.0, opacity: 1.0))
+                                .foregroundColor(Color("Delete"))
                                 .frame(minWidth: 0, maxWidth: .infinity)
                         }
                     }
