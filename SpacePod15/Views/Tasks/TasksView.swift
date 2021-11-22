@@ -47,7 +47,7 @@ struct TasksView: View {
                         Image(systemName: "plus.circle.fill" )
                     }
                     ).sheet(isPresented: $showEditTaskView){
-                        EditTaskView(showEditTaskView: $showEditTaskView)
+                        EditTaskView(showEditTaskView: $showEditTaskView, taskToEdit: nil)
                     }
                 }
             }
@@ -64,7 +64,7 @@ struct TaskRow: View {
                 Spacer()
                 
                 //if task.priority != .noPriority {
-                    Image(systemName: "exclamationmark\(task.priority != .low ? ".\(task.priority.rawValue+1)" : "")")
+                Image(systemName: (task.completed ? "checkmark" : "exclamationmark\(task.priority != .low ? ".\(task.priority.rawValue+1)" : "")"))
                         .resizable()
                         .font(Font.title.weight(.bold))
                         .foregroundColor(.white)

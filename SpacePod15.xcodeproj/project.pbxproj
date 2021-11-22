@@ -156,8 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				26CD5C4C2744FA580005EB4D /* TaskInfo.swift */,
-				26CD5C4E2746606C0005EB4D /* Subjects.swift */,
 				2698A4B6274BA31C00C1CCA2 /* UnlockedAward.swift */,
+				26CD5C4E2746606C0005EB4D /* Subjects.swift */,
 			);
 			path = "Data Structs";
 			sourceTree = "<group>";

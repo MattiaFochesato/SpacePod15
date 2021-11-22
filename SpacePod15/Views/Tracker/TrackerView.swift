@@ -34,7 +34,9 @@ struct TrackerView: View {
                     }else{
                         ScrollView {
                             VStack(spacing: 0) {
-                                ForEach(dataManager.tasks, id: \.self) { task in
+                                ForEach(dataManager.tasks.filter({ task in
+                                    task.completed
+                                }), id: \.self) { task in
                                   NavigationLink {
                                         TappedTask(task: task)
                                     } label: {

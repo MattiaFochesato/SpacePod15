@@ -11,6 +11,7 @@ struct TappedTask: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var showingDeleteConfirmationAlert = false
+    @State private var showingEditSheet = false
     
     @EnvironmentObject var dataManager: DataManager
     
@@ -114,13 +115,17 @@ struct TappedTask: View {
                 }.listStyle(InsetGroupedListStyle())
             //}
             .navigationBarTitle(Text("Task Info"), displayMode: .inline)
-            /*.navigationBarItems(trailing:
-                                    Button(action: {
-                
-            }, label: {
-                Text("Done")
-            })
-            )*/
+            .navigationBarItems(trailing:
+                Button("Edit", action: {
+                self.showingEditSheet.toggle()
+            }))
+            .sheet(isPresented: $showingEditSheet) {
+                //Dismiss
+                print("Dismissed Edit Task View")
+            } content: {
+                //Content
+                EditTaskView(showEditTaskView: $showingEditSheet, taskToEdit: task)
+            }
         }
     }
 }
