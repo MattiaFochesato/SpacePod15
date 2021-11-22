@@ -13,8 +13,6 @@ struct TappedTask: View {
     
     var task : TaskInfo
     
-    @State private var priority: TaskPriority = .noPriority
-    
     var body: some View {
         //NavigationView {
             VStack {
@@ -22,15 +20,23 @@ struct TappedTask: View {
                     Section {
                         Text("\(task.name)")
                     }
-                    Section("Date") {
-                        Text("data selezionata")
+                    
+                    if let date = task.date {
+                        Section("Date") {
+                            Text(date.prettyPrint())
+                            /*DatePicker("",
+                                       selection: .constant(date),
+                                       displayedComponents: [.date])
+                                .disabled(true)*/
+                        }
                     }
+                    
                     Section("Priority") {
                         HStack(spacing : 0) {
                             VStack {
                                 ZStack {
                                     Circle()
-                                        .foregroundColor(priority == .noPriority ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                        .foregroundColor(task.priority == .noPriority ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
                                     
                                     Image(systemName: "nosign")
                                         .resizable()
@@ -42,7 +48,7 @@ struct TappedTask: View {
                             VStack {
                                 ZStack {
                                     Circle()
-                                        .foregroundColor(priority == .low ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                        .foregroundColor(task.priority == .low ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
                                     
                                     Image(systemName: "nosign")
                                         .resizable()
@@ -54,7 +60,7 @@ struct TappedTask: View {
                             VStack {
                                 ZStack {
                                     Circle()
-                                        .foregroundColor(priority == .medium ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                        .foregroundColor(task.priority == .medium ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
                                     
                                     Image(systemName: "nosign")
                                         .resizable()
@@ -66,7 +72,7 @@ struct TappedTask: View {
                             VStack {
                                 ZStack {
                                     Circle()
-                                        .foregroundColor(priority == .high ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                        .foregroundColor(task.priority == .high ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
                                     
                                     Image(systemName: "nosign")
                                         .resizable()
@@ -111,6 +117,6 @@ struct TappedTask: View {
 
 struct TappedTask_Previews: PreviewProvider {
     static var previews: some View {
-        TappedTask(task: TaskInfo(id: UUID(), subject: "Italiano", name: "Studia Foscolo", taskEmoji: "📕", priority: .medium, completed: false, date: nil))
+        TappedTask(task: TaskInfo(id: UUID(), subject: "Italiano", name: "Studia Foscolo", taskEmoji: "📕", priority: .medium, completed: false, date: Date()))
     }
 }
