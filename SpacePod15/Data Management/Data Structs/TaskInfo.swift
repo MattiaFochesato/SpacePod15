@@ -20,8 +20,7 @@ struct TaskInfo: Codable, Hashable, Identifiable {
 }
 
 enum TaskPriority: Int, Codable {
-    case noPriority = 0
-    case low = 1
-    case medium = 2
-    case high = 3
+    case low = 0
+    case medium = 1
+    case high = 2
 }

@@ -22,7 +22,7 @@ struct EditTaskView: View {
     @State private var taskName: String = ""
     @State private var taskEmoji: String = ""
     
-    @State private var priority: TaskPriority = .noPriority
+    @State private var priority: TaskPriority = .low
     
     @State private var dateToggled = false
     @State private var date = Date()
@@ -53,29 +53,7 @@ struct EditTaskView: View {
                     }
                     Section(header: Text("Priority")){
                         HStack(spacing: 0){
-                            VStack(alignment: .leading){
-                                Button {
-                                    priority = .noPriority
-                                } label: {
-                                    
-                                    VStack {
-                                        
-                                        ZStack {
-                                            Circle()
-                                                .foregroundColor(priority == .noPriority ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
-                                            
-                                            Image(systemName: "nosign")
-                                                .resizable()
-                                                .foregroundColor(.white)
-                                                .frame(width: 30, height: 30)
-                                        }
-                                        .frame(width: 45, height: 45)
-                                        Text("None")
-                                    }
-                                }.buttonStyle(PlainButtonStyle())
-                                
-                                
-                            }.frame(minWidth: 0, maxWidth: .infinity)
+                            
                             VStack(alignment: .center){
                                 Button {
                                     priority = .low

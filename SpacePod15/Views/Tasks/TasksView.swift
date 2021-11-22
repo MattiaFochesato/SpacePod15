@@ -63,8 +63,8 @@ struct TaskRow: View {
             HStack {
                 Spacer()
                 
-                if task.priority != .noPriority {
-                    Image(systemName: "exclamationmark\(task.priority != .low ? ".\(task.priority.rawValue)" : "")")
+                //if task.priority != .noPriority {
+                    Image(systemName: "exclamationmark\(task.priority != .low ? ".\(task.priority.rawValue+1)" : "")")
                         .resizable()
                         .font(Font.title.weight(.bold))
                         .foregroundColor(.white)
@@ -74,7 +74,7 @@ struct TaskRow: View {
                               .background(Color.secondary)
                               .clipShape(Circle())
                               .padding([.trailing, .top], 8)
-                }
+                //}
                 
             }
             Spacer()

@@ -39,18 +39,6 @@ struct TappedTask: View {
                             VStack {
                                 ZStack {
                                     Circle()
-                                        .foregroundColor(task.priority == .noPriority ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
-                                    
-                                    Image(systemName: "nosign")
-                                        .resizable()
-                                        .foregroundColor(.white)
-                                        .frame(width: 30, height: 30)
-                                }
-                                .frame(width: 45, height: 45)
-                            }.frame(minWidth: 0, maxWidth: .infinity)
-                            VStack {
-                                ZStack {
-                                    Circle()
                                         .foregroundColor(task.priority == .low ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
                                     
                                     Image(systemName: "nosign")
