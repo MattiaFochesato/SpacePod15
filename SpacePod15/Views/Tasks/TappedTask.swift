@@ -108,7 +108,7 @@ struct TappedTask: View {
                             self.showingDeleteConfirmationAlert.toggle()
                         } label: {
                             Text("Delete Task")
-                                .foregroundColor(Color(red: 0.871, green: 0.059, blue: 0.0, opacity: 1.0))
+                                .foregroundColor(Color("Delete"))
                                 .frame(minWidth: 0, maxWidth: .infinity)
                         }.alert(isPresented: $showingDeleteConfirmationAlert) {
                             Alert(title: Text("Warning"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete"),action:{
