@@ -44,6 +44,9 @@ struct TasksView: View {
                             .font(.title3)
                             .bold()
                         Text("You don’t have any task to complete.")
+                            .font(.body)
+                        Text("Press the \(Image(systemName: "plus.circle.fill")) button to create a new task!")
+                            .font(.footnote)
                     }
                 }else{
                     //ScrollView {
@@ -65,12 +68,26 @@ struct TasksView: View {
                         ForEach(tasksToShow, id: \.self) { task in
                             NavigationLink {
                                 TappedTask(task: task)
+                                    
                             } label: {
                                 TaskRow(task: task)
                                     .cornerRadius(10)
                                     //.padding([.leading, .trailing])
                                     //.padding([.top, .bottom], 10)
                                     .shadow(radius: 8)
+                                    .contextMenu(menuItems: {
+                                        Button(action: {
+                                            let generator = UINotificationFeedbackGenerator()
+                                            generator.notificationOccurred(.success)
+                                            
+                                            var newTask = task
+                                            newTask.completed = Date()
+                                            dataManager.update(task: newTask)
+                                        }, label:
+                                        {
+                                            Label("Complete task", systemImage: "checkmark.circle.fill")
+                                        })
+                                    })
                             }.buttonStyle(ScaleButtonStyle())
                                 .gridSpan(column: task.priority.rawValue + 1)
                         }
@@ -125,7 +142,11 @@ struct TaskRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             ZStack {
-                Image("bgScienze")
+                Image(Subject.subjects.filter({ sub in
+                    sub.name == task.subject
+                }).map({ sub in
+                    sub.background
+                }).first!)
                     .resizable()
                     .scaledToFit()
                 

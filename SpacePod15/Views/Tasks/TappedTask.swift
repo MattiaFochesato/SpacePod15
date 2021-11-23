@@ -40,7 +40,7 @@ struct TappedTask: View {
                             VStack {
                                 ZStack {
                                     Circle()
-                                        .foregroundColor(task.priority == .low ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                        .foregroundColor(task.priority == .low ? Color("Low") : Color("PriorityBadgeBg"))
                                     
                                     Image(systemName: "exclamationmark")
                                         .resizable()
@@ -53,7 +53,7 @@ struct TappedTask: View {
                             VStack {
                                 ZStack {
                                     Circle()
-                                        .foregroundColor(task.priority == .medium ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                        .foregroundColor(task.priority == .medium ? Color("Medium") : Color("PriorityBadgeBg"))
                                     
                                     Image(systemName: "exclamationmark.2")
                                         .resizable()
@@ -66,7 +66,7 @@ struct TappedTask: View {
                             VStack {
                                 ZStack {
                                     Circle()
-                                        .foregroundColor(task.priority == .high ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                        .foregroundColor(task.priority == .high ? Color("High") : Color("PriorityBadgeBg"))
                                     
                                     Image(systemName: "exclamationmark.3")
                                         .resizable()

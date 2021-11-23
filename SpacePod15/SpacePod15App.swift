@@ -30,6 +30,16 @@ struct SpacePod15App: App {
             }
             .accentColor(Color("AccentColor"))
             .environmentObject(dataManager)
+            .onAppear {
+                let center = UNUserNotificationCenter.current()
+                center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+                    if granted {
+                        print("Yay! Notifications granted")
+                    } else {
+                        print("D'oh.. No notifications access")
+                    }
+                }
+            }
         }
     }
 }

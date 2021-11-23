@@ -9,13 +9,13 @@ import Foundation
 
 struct Subject: Hashable {
     public static let subjects: [Subject] = [
-        Subject(name: "Letteratura",emoji: "📖", awards: [
+        Subject(name: "Letteratura",emoji: "📖", background: "bgItaliano", awards: [
             Award(name: "Newton Award", description: "Your first achievement!", imageName: "medLetteraturaBronzo"),
             Award(name: "Newton Award", description: "Your second achievement!", imageName: "medLetteraturaArgento"),
             Award(name: "Newton Award", description: "Your third achievement!", imageName: "medLetteraturaOro"),
             Award(name: "Newton Award", description: "Your third achievement!", imageName: "medLetteraturaOro"),//Clone to add fake awards
         ]),
-        Subject(name: "Geography",emoji: "🌎", awards: [
+        Subject(name: "Geography",emoji: "🌎", background: "bgGeografia", awards: [
             Award(name: "Newton Award", description: "Your first achievement!", imageName: "medGeografiaBronzo"),
             Award(name: "Newton Award", description: "Your second achievement!", imageName: "medGeografiaArgento"),
             Award(name: "Newton Award", description: "Your third achievement!", imageName: "medGeografiaOro"),
@@ -23,10 +23,10 @@ struct Subject: Hashable {
             Award(name: "Newton Award", description: "Your first achievement!", imageName: "medGeografiaOro"),//Clone to add fake awards
             
         ]),
-        Subject(name: "Matematica",emoji: "🧮", awards: [
+        Subject(name: "Matematica",emoji: "🧮", background: "bgMatematica", awards: [
             Award(name: "Newton Award", description: "Your first achievement!", imageName: "medMatematicaBronzo"),
         ]),
-        Subject(name: "Scienze",emoji: "🧪", awards: [
+        Subject(name: "Scienze",emoji: "🧪", background: "bgScienze", awards: [
             Award(name: "Newton Award", description: "Your first achievement!", imageName: "medScienzeBronzo"),
             Award(name: "Newton Award", description: "Your second achievement!", imageName: "medScienzeArgento"),
             Award(name: "Newton Award", description: "Your third achievement!", imageName: "medScienzeOro"),
@@ -38,6 +38,7 @@ struct Subject: Hashable {
     
     let name: String
     let emoji: String
+    let background: String
     let awards: [Award]
 }
 

@@ -65,10 +65,12 @@ class DataManager: ObservableObject {
         }
         
         print("[TasksManager] Loaded \(tasks.count) tasks from JSON")
+        self.scheduleNotifications()
     }
     
     //Save all the tasks to the JSON file to keep all the info
     func saveDataToJson() {
+        self.scheduleNotifications()
         //Native class to encode json
         let jsonEncoder = JSONEncoder()
         
@@ -109,6 +111,48 @@ class DataManager: ObservableObject {
                 tasks.remove(at: index)
                 self.saveDataToJson()
                 return
+            }
+        }
+    }
+    
+    func scheduleNotifications() {
+        print("[TasksManager] Scheduling notifications")
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.removeAllPendingNotificationRequests()
+        for task in tasks {
+            if let _ = task.completed {
+                continue
+            }
+            
+            guard let taskDate = task.date else {
+                continue
+            }
+            
+            if !Calendar.current.isDateInToday(taskDate) {
+                continue
+            }
+            
+            let content = UNMutableNotificationContent()
+            content.title = "Don't forget your task!"
+            content.body = "\(task.subject): \(task.name) is about to expire today!"
+            
+            
+            var dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: taskDate)
+            dateComponents.hour = 15
+            dateComponents.minute = 30
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            
+            // Create the request
+            let uuidString = UUID().uuidString
+            let request = UNNotificationRequest(identifier: uuidString,
+                        content: content, trigger: trigger)
+
+            // Schedule the request with the system.
+            
+            notificationCenter.add(request) { (error) in
+               if error != nil {
+                   print("[TasksManager] Cannot add notification trigger")
+               }
             }
         }
     }

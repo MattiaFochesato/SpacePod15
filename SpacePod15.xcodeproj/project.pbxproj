@@ -20,6 +20,9 @@
 		2698A4B327481B5C00C1CCA2 /* ScaleButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2698A4B227481B5C00C1CCA2 /* ScaleButtonStyle.swift */; };
 		2698A4B5274B938500C1CCA2 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2698A4B4274B938500C1CCA2 /* Date+Extensions.swift */; };
 		2698A4B7274BA31C00C1CCA2 /* UnlockedAward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2698A4B6274BA31C00C1CCA2 /* UnlockedAward.swift */; };
+		26A7BA18274CE0CC00AB1ACC /* medal.vox.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA15274CE0CC00AB1ACC /* medal.vox.png */; };
+		26A7BA19274CE0CC00AB1ACC /* medal.vox.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA16274CE0CC00AB1ACC /* medal.vox.mtl */; };
+		26A7BA1A274CE0CC00AB1ACC /* medal.vox.obj in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA17274CE0CC00AB1ACC /* medal.vox.obj */; };
 		26CD5C4B2744FA140005EB4D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4A2744FA140005EB4D /* DataManager.swift */; };
 		26CD5C4D2744FA580005EB4D /* TaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4C2744FA580005EB4D /* TaskInfo.swift */; };
 		26CD5C4F2746606C0005EB4D /* Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4E2746606C0005EB4D /* Subjects.swift */; };
@@ -42,6 +45,9 @@
 		2698A4B227481B5C00C1CCA2 /* ScaleButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleButtonStyle.swift; sourceTree = "<group>"; };
 		2698A4B4274B938500C1CCA2 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		2698A4B6274BA31C00C1CCA2 /* UnlockedAward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockedAward.swift; sourceTree = "<group>"; };
+		26A7BA15274CE0CC00AB1ACC /* medal.vox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medal.vox.png; sourceTree = "<group>"; };
+		26A7BA16274CE0CC00AB1ACC /* medal.vox.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = medal.vox.mtl; sourceTree = "<group>"; };
+		26A7BA17274CE0CC00AB1ACC /* medal.vox.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = medal.vox.obj; sourceTree = "<group>"; };
 		26CD5C4A2744FA140005EB4D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		26CD5C4C2744FA580005EB4D /* TaskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfo.swift; sourceTree = "<group>"; };
 		26CD5C4E2746606C0005EB4D /* Subjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
@@ -83,6 +89,7 @@
 		2611FD782742579D004DF7E9 /* SpacePod15 */ = {
 			isa = PBXGroup;
 			children = (
+				26A7BA13274CE0B800AB1ACC /* Medals */,
 				26CD5C482744F9FC0005EB4D /* Data Management */,
 				2611FD8B274265A3004DF7E9 /* Views */,
 				2611FD792742579D004DF7E9 /* SpacePod15App.swift */,
@@ -119,6 +126,24 @@
 				264EE0F3274BB6EF00317578 /* HalfSheet.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		26A7BA13274CE0B800AB1ACC /* Medals */ = {
+			isa = PBXGroup;
+			children = (
+				26A7BA14274CE0BF00AB1ACC /* Demo */,
+			);
+			path = Medals;
+			sourceTree = "<group>";
+		};
+		26A7BA14274CE0BF00AB1ACC /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				26A7BA16274CE0CC00AB1ACC /* medal.vox.mtl */,
+				26A7BA17274CE0CC00AB1ACC /* medal.vox.obj */,
+				26A7BA15274CE0CC00AB1ACC /* medal.vox.png */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		26CD5C452744F8B30005EB4D /* Awards */ = {
@@ -231,9 +256,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26A7BA19274CE0CC00AB1ACC /* medal.vox.mtl in Resources */,
 				2611FD812742579E004DF7E9 /* Preview Assets.xcassets in Resources */,
+				26A7BA18274CE0CC00AB1ACC /* medal.vox.png in Resources */,
 				2611FD88274257F2004DF7E9 /* .gitignore in Resources */,
 				2611FD8A2742584F004DF7E9 /* README.md in Resources */,
+				26A7BA1A274CE0CC00AB1ACC /* medal.vox.obj in Resources */,
 				2611FD7E2742579E004DF7E9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

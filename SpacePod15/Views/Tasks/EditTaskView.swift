@@ -9,11 +9,14 @@ import Foundation
 import SwiftUI
 import Combine
 
-
+private enum FocusedField: Int, Hashable {
+    case name
+}
 struct EditTaskView: View {
     @EnvironmentObject var dataManager: DataManager
     
     @Binding var showEditTaskView : Bool
+    @State private var showingErrorAlert = false
     
     private var taskToEdit: TaskInfo? = nil
     
@@ -27,8 +30,6 @@ struct EditTaskView: View {
     
     @State private var dateToggled = false
     @State private var date: Date = Date()
-    
-    //@State private var completed: Bool? = Date()
     
     init(showEditTaskView: Binding<Bool>, taskToEdit: TaskInfo?) {
         self._showEditTaskView = showEditTaskView
@@ -50,22 +51,43 @@ struct EditTaskView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0){
-                Picker("Please choose a subject", selection: $selectedSubject) {
-                    ForEach(subjects, id: \.self) {
-                        Text($0)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .background(Color(red: 0.951, green: 0.951, blue: 0.98, opacity: 1.0))
+                /*Picker("Please choose a subject", selection: $selectedSubject) {
+                 ForEach(subjects, id: \.self) {
+                 Text($0)
+                 }
+                 }
+                 .pickerStyle(.wheel)
+                 .background(Color(red: 0.951, green: 0.951, blue: 0.98, opacity: 1.0))*/
                 //.cornerRadius(20)
                 //.shadow(radius: 5, x: 5, y: 5)
                 List {
-                    Section{
+                    Section(header: Text("Subject")) {
+                        Picker("Please choose a subject", selection: $selectedSubject) {
+                            ForEach(subjects, id: \.self) {
+                                Text($0)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        //.background(Color(red: 0.951, green: 0.951, blue: 0.98, opacity: 1.0))
+                    }
+                    Section(header: Text("Task Name")){
                         /*HStack {
-                            EmojiTextField(text: $taskEmoji, placeholder: "🤌🏻")
-                                .frame(maxWidth: 40)
-                            */
-                            TextField("Task Name", text: $taskName)
+                         EmojiTextField(text: $taskEmoji, placeholder: "🤌🏻")
+                         .frame(maxWidth: 40)
+                         */
+                        HStack {
+                            /*Image(systemName: "calendar")
+                             .resizable()
+                             .font(Font.title.weight(.bold))
+                             .foregroundColor(.white)
+                             .aspectRatio(contentMode: .fit)
+                             .frame(width: 20, height: 20)
+                             .frame(width: 40, height: 40)
+                             .background(Color.blue)
+                             .clipShape(RoundedRectangle(cornerRadius: 12))*/
+                            TextField("Insert your task name", text: $taskName)
+                        }//.listRowInsets(EdgeInsets())
+                        // .padding(8)
                         //}
                     }
                     Section(header: Text("Priority")){
@@ -78,7 +100,7 @@ struct EditTaskView: View {
                                     VStack {
                                         ZStack {
                                             Circle()
-                                                .foregroundColor(priority == .low ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                                .foregroundColor(priority == .low ? Color("Low") : Color("PriorityBadgeBg"))
                                             
                                             Image(systemName: "exclamationmark")
                                                 .resizable()
@@ -98,7 +120,7 @@ struct EditTaskView: View {
                                     VStack {
                                         ZStack {
                                             Circle()
-                                                .foregroundColor(priority == .medium ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                                .foregroundColor(priority == .medium ? Color("Medium") : Color("PriorityBadgeBg"))
                                             
                                             Image(systemName: "exclamationmark.2")
                                                 .resizable()
@@ -119,7 +141,7 @@ struct EditTaskView: View {
                                     VStack {
                                         ZStack {
                                             Circle()
-                                                .foregroundColor(priority == .high ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
+                                                .foregroundColor(priority == .high ? Color("High") : Color("PriorityBadgeBg"))
                                             
                                             Image(systemName: "exclamationmark.3")
                                                 .resizable()
@@ -139,11 +161,23 @@ struct EditTaskView: View {
                     Section {
                         Toggle("Date", isOn: $dateToggled)
                         if dateToggled{
-                            DatePicker(
-                                "",
-                                selection: $date,
-                                displayedComponents: [.date]
-                            )
+                            HStack {
+                                Image(systemName: "calendar")
+                                    .resizable()
+                                    .font(Font.title.weight(.bold))
+                                    .foregroundColor(.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20, height: 20)
+                                    .frame(width: 40, height: 40)
+                                    .background(Color.blue)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                
+                                DatePicker(
+                                    "",
+                                    selection: $date,
+                                    displayedComponents: [.date]
+                                )
+                            }
                         }
                     }
                 }.listStyle(InsetGroupedListStyle())
@@ -152,6 +186,10 @@ struct EditTaskView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                                     Button("Done", action: {
+                if taskName.count == 0 {
+                    self.showingErrorAlert.toggle()
+                    return
+                }
                 showEditTaskView.toggle()
                 let newTask = TaskInfo(id: (taskToEdit == nil ? UUID() : taskToEdit!.id),subject: selectedSubject, name: taskName, taskEmoji: taskEmoji, priority: priority, completed: nil, date: (dateToggled ? date : nil))
                 
@@ -163,6 +201,10 @@ struct EditTaskView: View {
                 }
             })
             )
+            .alert("Insert the task name", isPresented: $showingErrorAlert) {
+                Button("Ok", role: .cancel) { }
+            }
+            
         }
     }
 }

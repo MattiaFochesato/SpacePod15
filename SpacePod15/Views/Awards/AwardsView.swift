@@ -100,7 +100,7 @@ struct AwardImageView: View {
                         .grayscale(unlocked != nil ? 0.0 : 1.0)
                         .blur(radius: unlocked != nil ? 0 : 4)
                         .padding(4)
-                        .background(Color(red: 0.951, green: 0.951, blue: 0.98, opacity: 1.0))
+                        .background(Color("AwardDisplayBg"))
                         .cornerRadius(20)
                         .shadow(radius: 5, x: 5, y: 5)
                     if unlocked == nil {
