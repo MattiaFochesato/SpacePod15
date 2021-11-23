@@ -89,7 +89,7 @@ struct TappedTask: View {
                                 
                                 presentationMode.wrappedValue.dismiss()
                                 
-                                dataManager.unlockedAwards.append(UnlockedAward(awardName: "medGeografiaBronzo", date: Date()))
+                                dataManager.unlockAward(subject: task.subject)
                             } label: {
                                 Text("Complete Task")
                                     .foregroundColor(Color("AccentColor"))
@@ -104,18 +104,16 @@ struct TappedTask: View {
                             Text("Delete Task")
                                 .foregroundColor(Color("Delete"))
                                 .frame(minWidth: 0, maxWidth: .infinity)
-                        }.alert(isPresented: $showingDeleteConfirmationAlert) {
-                            Alert(title: Text("Warning"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete"),action:{
-                                
-                                dataManager.delete(task: task)
-                                presentationMode.wrappedValue.dismiss()
-                            }), secondaryButton: .cancel(Text("Cancel")))
-
                         }
-                        /*.alert("Wa", isPresented: $showingDeleteConfirmationAlert) {
-                            Button("First") { }
-                            Button("Second") { }
-                        }*/
+                        .actionSheet(isPresented: $showingDeleteConfirmationAlert) {
+                            ActionSheet(title: Text("Are you sure?"), buttons: [
+                                .default(Text("Delete")) {
+                                    dataManager.delete(task: task)
+                                    presentationMode.wrappedValue.dismiss()
+                                },
+                                .cancel()
+                            ])
+                        }
                     }
                 }.listStyle(InsetGroupedListStyle())
             //}

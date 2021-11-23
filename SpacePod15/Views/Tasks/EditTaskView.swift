@@ -161,8 +161,8 @@ struct EditTaskView: View {
                     Section {
                         Toggle("Date", isOn: $dateToggled)
                         if dateToggled{
-                            HStack {
-                                Image(systemName: "calendar")
+                            //HStack {
+                                /*Image(systemName: "calendar")
                                     .resizable()
                                     .font(Font.title.weight(.bold))
                                     .foregroundColor(.white)
@@ -170,14 +170,14 @@ struct EditTaskView: View {
                                     .frame(width: 20, height: 20)
                                     .frame(width: 40, height: 40)
                                     .background(Color.blue)
-                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))*/
                                 
                                 DatePicker(
                                     "",
                                     selection: $date,
                                     displayedComponents: [.date]
                                 )
-                            }
+                            //}
                         }
                     }
                 }.listStyle(InsetGroupedListStyle())

@@ -28,7 +28,8 @@ class DataManager: ObservableObject {
         //Load tasks from JSON
         self.loadDataFromJson()
         
-        unlockedAwards = [UnlockedAward(awardName: "medLetteraturaBronzo", date: Date()),
+        unlockedAwards = [UnlockedAward(awardName: "medGeografiaBronzo", date: Date()),
+                          UnlockedAward(awardName: "medGeografiaArgento", date: Date()),
                           UnlockedAward(awardName: "medMatematicaBronzo", date: Date())]
     }
     
@@ -91,6 +92,24 @@ class DataManager: ObservableObject {
             print("[TasksManager] Cannot encode JSON!")
             return
         }
+    }
+    
+    func unlockAward(subject: String) {
+        let awardToUnlock = Subject.subjects.filter { sub in
+            sub.name == subject
+        }.first!.awards.first!
+        
+        //var alreadyUnlocked = false
+        for unlockedAward in unlockedAwards {
+            if unlockedAward.awardName == awardToUnlock.imageName {
+                //alreadyUnlocked = true
+                return
+            }
+        }
+        
+        unlockedAwards.append(UnlockedAward(awardName: awardToUnlock.imageName, date: Date()))
+        
+        saveDataToJson()
     }
     
     //Updates the task in the shared list

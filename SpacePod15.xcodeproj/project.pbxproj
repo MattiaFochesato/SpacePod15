@@ -23,6 +23,15 @@
 		26A7BA18274CE0CC00AB1ACC /* medal.vox.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA15274CE0CC00AB1ACC /* medal.vox.png */; };
 		26A7BA19274CE0CC00AB1ACC /* medal.vox.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA16274CE0CC00AB1ACC /* medal.vox.mtl */; };
 		26A7BA1A274CE0CC00AB1ACC /* medal.vox.obj in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA17274CE0CC00AB1ACC /* medal.vox.obj */; };
+		26A7BA25274D01B300AB1ACC /* medGeografiaBronzo.vox.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA1C274D01B300AB1ACC /* medGeografiaBronzo.vox.png */; };
+		26A7BA26274D01B300AB1ACC /* medGeografiaOro.vox.obj in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA1D274D01B300AB1ACC /* medGeografiaOro.vox.obj */; };
+		26A7BA27274D01B300AB1ACC /* medGeografiaArgento.vox.obj in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA1E274D01B300AB1ACC /* medGeografiaArgento.vox.obj */; };
+		26A7BA28274D01B300AB1ACC /* medGeografiaOro.vox.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA1F274D01B300AB1ACC /* medGeografiaOro.vox.png */; };
+		26A7BA29274D01B300AB1ACC /* medGeografiaBronzo.vox.obj in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA20274D01B300AB1ACC /* medGeografiaBronzo.vox.obj */; };
+		26A7BA2A274D01B300AB1ACC /* medGeografiaOro.vox.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA21274D01B300AB1ACC /* medGeografiaOro.vox.mtl */; };
+		26A7BA2B274D01B300AB1ACC /* medGeografiaBronzo.vox.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA22274D01B300AB1ACC /* medGeografiaBronzo.vox.mtl */; };
+		26A7BA2C274D01B300AB1ACC /* medGeografiaArgento.vox.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA23274D01B300AB1ACC /* medGeografiaArgento.vox.png */; };
+		26A7BA2D274D01B300AB1ACC /* medGeografiaArgento.vox.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 26A7BA24274D01B300AB1ACC /* medGeografiaArgento.vox.mtl */; };
 		26CD5C4B2744FA140005EB4D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4A2744FA140005EB4D /* DataManager.swift */; };
 		26CD5C4D2744FA580005EB4D /* TaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4C2744FA580005EB4D /* TaskInfo.swift */; };
 		26CD5C4F2746606C0005EB4D /* Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD5C4E2746606C0005EB4D /* Subjects.swift */; };
@@ -48,6 +57,15 @@
 		26A7BA15274CE0CC00AB1ACC /* medal.vox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medal.vox.png; sourceTree = "<group>"; };
 		26A7BA16274CE0CC00AB1ACC /* medal.vox.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = medal.vox.mtl; sourceTree = "<group>"; };
 		26A7BA17274CE0CC00AB1ACC /* medal.vox.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = medal.vox.obj; sourceTree = "<group>"; };
+		26A7BA1C274D01B300AB1ACC /* medGeografiaBronzo.vox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medGeografiaBronzo.vox.png; sourceTree = "<group>"; };
+		26A7BA1D274D01B300AB1ACC /* medGeografiaOro.vox.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = medGeografiaOro.vox.obj; sourceTree = "<group>"; };
+		26A7BA1E274D01B300AB1ACC /* medGeografiaArgento.vox.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = medGeografiaArgento.vox.obj; sourceTree = "<group>"; };
+		26A7BA1F274D01B300AB1ACC /* medGeografiaOro.vox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medGeografiaOro.vox.png; sourceTree = "<group>"; };
+		26A7BA20274D01B300AB1ACC /* medGeografiaBronzo.vox.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = medGeografiaBronzo.vox.obj; sourceTree = "<group>"; };
+		26A7BA21274D01B300AB1ACC /* medGeografiaOro.vox.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = medGeografiaOro.vox.mtl; sourceTree = "<group>"; };
+		26A7BA22274D01B300AB1ACC /* medGeografiaBronzo.vox.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = medGeografiaBronzo.vox.mtl; sourceTree = "<group>"; };
+		26A7BA23274D01B300AB1ACC /* medGeografiaArgento.vox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = medGeografiaArgento.vox.png; sourceTree = "<group>"; };
+		26A7BA24274D01B300AB1ACC /* medGeografiaArgento.vox.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = medGeografiaArgento.vox.mtl; sourceTree = "<group>"; };
 		26CD5C4A2744FA140005EB4D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		26CD5C4C2744FA580005EB4D /* TaskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfo.swift; sourceTree = "<group>"; };
 		26CD5C4E2746606C0005EB4D /* Subjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
@@ -131,6 +149,7 @@
 		26A7BA13274CE0B800AB1ACC /* Medals */ = {
 			isa = PBXGroup;
 			children = (
+				26A7BA1B274D010300AB1ACC /* Geografia */,
 				26A7BA14274CE0BF00AB1ACC /* Demo */,
 			);
 			path = Medals;
@@ -144,6 +163,22 @@
 				26A7BA15274CE0CC00AB1ACC /* medal.vox.png */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		26A7BA1B274D010300AB1ACC /* Geografia */ = {
+			isa = PBXGroup;
+			children = (
+				26A7BA24274D01B300AB1ACC /* medGeografiaArgento.vox.mtl */,
+				26A7BA1E274D01B300AB1ACC /* medGeografiaArgento.vox.obj */,
+				26A7BA23274D01B300AB1ACC /* medGeografiaArgento.vox.png */,
+				26A7BA22274D01B300AB1ACC /* medGeografiaBronzo.vox.mtl */,
+				26A7BA20274D01B300AB1ACC /* medGeografiaBronzo.vox.obj */,
+				26A7BA1C274D01B300AB1ACC /* medGeografiaBronzo.vox.png */,
+				26A7BA21274D01B300AB1ACC /* medGeografiaOro.vox.mtl */,
+				26A7BA1D274D01B300AB1ACC /* medGeografiaOro.vox.obj */,
+				26A7BA1F274D01B300AB1ACC /* medGeografiaOro.vox.png */,
+			);
+			path = Geografia;
 			sourceTree = "<group>";
 		};
 		26CD5C452744F8B30005EB4D /* Awards */ = {
@@ -256,12 +291,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26A7BA27274D01B300AB1ACC /* medGeografiaArgento.vox.obj in Resources */,
+				26A7BA2B274D01B300AB1ACC /* medGeografiaBronzo.vox.mtl in Resources */,
 				26A7BA19274CE0CC00AB1ACC /* medal.vox.mtl in Resources */,
+				26A7BA28274D01B300AB1ACC /* medGeografiaOro.vox.png in Resources */,
 				2611FD812742579E004DF7E9 /* Preview Assets.xcassets in Resources */,
+				26A7BA2C274D01B300AB1ACC /* medGeografiaArgento.vox.png in Resources */,
 				26A7BA18274CE0CC00AB1ACC /* medal.vox.png in Resources */,
 				2611FD88274257F2004DF7E9 /* .gitignore in Resources */,
+				26A7BA26274D01B300AB1ACC /* medGeografiaOro.vox.obj in Resources */,
+				26A7BA29274D01B300AB1ACC /* medGeografiaBronzo.vox.obj in Resources */,
 				2611FD8A2742584F004DF7E9 /* README.md in Resources */,
+				26A7BA25274D01B300AB1ACC /* medGeografiaBronzo.vox.png in Resources */,
+				26A7BA2D274D01B300AB1ACC /* medGeografiaArgento.vox.mtl in Resources */,
 				26A7BA1A274CE0CC00AB1ACC /* medal.vox.obj in Resources */,
+				26A7BA2A274D01B300AB1ACC /* medGeografiaOro.vox.mtl in Resources */,
 				2611FD7E2742579E004DF7E9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

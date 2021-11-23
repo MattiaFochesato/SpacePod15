@@ -83,6 +83,8 @@ struct TasksView: View {
                                             var newTask = task
                                             newTask.completed = Date()
                                             dataManager.update(task: newTask)
+                                            
+                                            dataManager.unlockAward(subject: task.subject)
                                         }, label:
                                         {
                                             Label("Complete task", systemImage: "checkmark.circle.fill")

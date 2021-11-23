@@ -30,10 +30,8 @@ struct AwardDetails: View {
                         .frame(height: 40)
                     Spacer()
                 }
-                Text(award.name)
-                    .font(isJustUnlocked ? .title2 : .title)
-                    .bold()
-                Spacer()
+                
+                //Spacer()
                 /*Image(award.imageName)
                  .resizable()
                  .scaledToFit()
@@ -42,25 +40,28 @@ struct AwardDetails: View {
                  SCNScene(named: "medal.vox.obj"),
                  options: [.autoenablesDefaultLighting, .allowsCameraControl]
                  ).frame(maxHeight:400)*/
-                SceneKitView(radius: 0.02, height: 2, angle: $rotationAngle)
-                    .frame(maxHeight:400)
+                SceneKitView(imageName: award.imageName, radius: 0.02, height: 2, angle: $rotationAngle)
+                    .frame(maxHeight:500)
                     .onAppear {
                         self.rotationAngle += .degrees(10000)
                     }
                 
                 
                 Spacer()
-                Text(award.description)
-                
+                //Text(award.description)
+                Text(award.name)
+                    .font(isJustUnlocked ? .title2 : .title)
+                    .bold()
                 if !isJustUnlocked {
-                    Spacer()
+                    //Spacer()
                     Text((unlockDate ?? Date()).prettyPrint())
                         .foregroundColor(.gray)
+                        .padding(.top, 8)
                 }
                 
                 Spacer()
             }
-            .navigationTitle(isJustUnlocked ? "New Award Unlocked" : "Your Award")
+            .navigationTitle(isJustUnlocked ? "New Award Unlocked" : "")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                                     Button("Close", action: {
@@ -74,12 +75,13 @@ struct SceneKitView: UIViewRepresentable {
     
     @Binding var angle: Angle
     
+    
     let node: SCNNode
     let scene: SCNScene
     
-    init(radius: CGFloat, height: CGFloat, angle: Binding<Angle>) {
+    init(imageName: String, radius: CGFloat, height: CGFloat, angle: Binding<Angle>) {
         
-        self.scene = SCNScene(named: "medal.vox.obj")!
+        self.scene = SCNScene(named: "\((imageName.contains("Geografia") ? imageName : "medal")).vox.obj")!
         self.scene.background.contents = UIColor.clear
         self.node = self.scene.rootNode
         
@@ -116,11 +118,11 @@ struct AwardDetails_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             AwardDetails(award:
-                            Award(name: "Demo Award", description: "Award super long description", imageName: "testAward"),
+                            Award(name: "Demo Award", description: "Award super long description", imageName: "medGeografiaOro"),
                          showAwardDetailsView: $showAwardDetailsView
             )
             AwardDetails(award:
-                            Award(name: "Demo Award", description: "Award super long description", imageName: "testAward"),
+                            Award(name: "Demo Award", description: "Award super long description", imageName: "medGeografiaOro"),
                          isJustUnlocked: true,
                          showAwardDetailsView: $showAwardDetailsView
             ).frame(height: 400)
