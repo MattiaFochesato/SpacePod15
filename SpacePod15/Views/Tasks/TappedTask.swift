@@ -42,8 +42,9 @@ struct TappedTask: View {
                                     Circle()
                                         .foregroundColor(task.priority == .low ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
                                     
-                                    Image(systemName: "nosign")
+                                    Image(systemName: "exclamationmark")
                                         .resizable()
+                                        .scaledToFit()
                                         .foregroundColor(.white)
                                         .frame(width: 30, height: 30)
                                 }
@@ -54,8 +55,9 @@ struct TappedTask: View {
                                     Circle()
                                         .foregroundColor(task.priority == .medium ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
                                     
-                                    Image(systemName: "nosign")
+                                    Image(systemName: "exclamationmark.2")
                                         .resizable()
+                                        .scaledToFit()
                                         .foregroundColor(.white)
                                         .frame(width: 30, height: 30)
                                 }
@@ -66,8 +68,9 @@ struct TappedTask: View {
                                     Circle()
                                         .foregroundColor(task.priority == .high ? Color("AccentColor") : Color(red: 0.901, green: 0.901, blue: 0.91, opacity: 1.0))
                                     
-                                    Image(systemName: "nosign")
+                                    Image(systemName: "exclamationmark.3")
                                         .resizable()
+                                        .scaledToFit()
                                         .foregroundColor(.white)
                                         .frame(width: 30, height: 30)
                                 }
