@@ -28,7 +28,8 @@ class DataManager: ObservableObject {
         //Load tasks from JSON
         self.loadDataFromJson()
         
-        unlockedAwards = [UnlockedAward(awardName: "testAward", date: Date())]
+        unlockedAwards = [UnlockedAward(awardName: "medLetteraturaBronzo", date: Date()),
+                          UnlockedAward(awardName: "medMatematicaBronzo", date: Date())]
     }
     
     func getDemoDataManager() -> DataManager {

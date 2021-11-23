@@ -176,7 +176,7 @@ struct TaskRow: View {
                                 .frame(width: 40, height: 40)
                                 .background(Color.orange)
                                 .clipShape(Circle())
-                                .padding([.top], 8)
+                                .padding([.top, .trailing], 8)
                         }
                         
                         

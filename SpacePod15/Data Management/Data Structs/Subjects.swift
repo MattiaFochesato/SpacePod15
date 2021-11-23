@@ -10,7 +10,6 @@ import Foundation
 struct Subject: Hashable {
     public static let subjects: [Subject] = [
         Subject(name: "Letteratura",emoji: "📖", awards: [
-            Award(name: "Newton Award", description: "Your first achievement!", imageName: "testAward"),
             Award(name: "Newton Award", description: "Your first achievement!", imageName: "medLetteraturaBronzo"),
             Award(name: "Newton Award", description: "Your second achievement!", imageName: "medLetteraturaArgento"),
             Award(name: "Newton Award", description: "Your third achievement!", imageName: "medLetteraturaOro"),

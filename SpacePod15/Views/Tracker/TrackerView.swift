@@ -31,9 +31,14 @@ struct TrackerView: View {
                 VStack {
                     if dataToShow.count == 0 {
                         VStack{
-                            Image("testAward")
-                            Text("Hurray!")
-                            Text("You don’t have any task.")
+                            //Image("testAward")
+                            Image(systemName: "book.closed.fill")
+                                .font(.system(size: 60).bold())
+                                .foregroundColor(Color("AccentColor"))
+                            Text("Much empty")
+                                .font(.title3)
+                                .bold()
+                            Text("Complete a task to move it here!")
                         }
                     }else{
                         ScrollView {
